@@ -24,6 +24,7 @@ const SearchBox = () => {
                     </button>
                     <input
                         onChange={(e) => setSearchText(e.target.value)}
+                        value={searchText}
                         className="placeholder:text-gray-300 block bg-transparent w-full rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                         placeholder="دنبال چه لوازمی هستید؟" type="text" name="search"/>
                 </label>
