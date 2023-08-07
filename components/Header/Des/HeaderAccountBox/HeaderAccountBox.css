@@ -1,0 +1,3 @@
+.user-area .welcome, .user-area .nickname-title {
+    @apply text-[12px] font-normal text-right text-gray-500 leading-[18px]
+}

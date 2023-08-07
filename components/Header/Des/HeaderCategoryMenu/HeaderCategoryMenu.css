@@ -1,0 +1,14 @@
+.cats-menu:hover ul#menu_header>li:first-child>ul {
+    @apply opacity-100 visible
+}
+.cats-menu:hover ul#menu_header li:hover>ul {
+    @apply opacity-100 visible
+}
+#menu_header>li:hover>a svg {
+    @apply transform rotate-90
+}
+#menu_header>li:hover>a { @apply text-blue-500 bg-gray-100; }
+
+#menu_header>li>ul>li a{
+    @apply block text-[12px] font-bold text-right text-gray-500 leading-4 p-0
+}

@@ -7,3 +7,6 @@
 html{
     @apply font-dana-fanum
 }
+input{
+    @apply rounded-md
+}
