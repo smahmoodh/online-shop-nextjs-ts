@@ -1,0 +1,6 @@
+.dropdown{
+    @apply box-border m-0 p-0 list-none font-dana absolute hidden top-[9999px] left-[9999px] z-[1050]
+}
+.dropdown.active{
+    @apply left-0 top-12 block transition ease-in-out delay-150
+}

@@ -1,6 +1,11 @@
-import '../styles/global.css';
-import AuthProvider from "@/app/context/Auth/AuthProvider";
+'use client'
+import {useEffect} from "react";
 
+import AuthProvider from "@/app/context/Auth/AuthProvider";
+import Header from "@/components/Header/header";
+import CartState from "@/app/context/Cart/CartState";
+
+import '../styles/global.css';
 
 export const metadata = {
     title: 'فروشگاه اینترنتی لوازم جانبی',
@@ -8,11 +13,20 @@ export const metadata = {
 }
 
 const RootLayout = ({children}) => {
+    useEffect(() => {
+        import('preline')
+    }, [])
     return (
         <html lang="fa" dir={'rtl'} className=''>
+            <head>
+                <script src="./node_modules/preline/dist/preline.js"></script>
+            </head>
             <body className='text-color-base bg-gray-100'>
                 <AuthProvider>
-                    {children}
+                    <CartState>
+                        <Header />
+                        {children}
+                    </CartState>
                 </AuthProvider>
             </body>
         </html>
