@@ -18,9 +18,7 @@ const RootLayout = ({children}) => {
     }, [])
     return (
         <html lang="fa" dir={'rtl'} className=''>
-            <head>
-                <script src="./node_modules/preline/dist/preline.js"></script>
-            </head>
+            <script src="./node_modules/preline/dist/preline.js"></script>
             <body className='text-color-base bg-gray-100'>
                 <AuthProvider>
                     <CartState>

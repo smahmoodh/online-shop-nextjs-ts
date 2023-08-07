@@ -34,9 +34,8 @@
 }
 .mode_mobile .basket-area .basket-menu {
     left: 0;
-    top: 100%;
+    /*top: 100%;*/
     right: 0;
-    left: 0;
     top: 154px;
     border-radius: 0;
     width: 100%;

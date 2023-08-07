@@ -52,7 +52,7 @@ const HeaderCategoryMenu = () => {
         return res;
     }
 
-    if (categories.length == 0) {
+    if (categories.length === 0) {
         return <div>Loading...</div>;
     }
     return (
