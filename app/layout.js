@@ -1,6 +1,5 @@
 'use client'
 import {useEffect} from "react";
-
 import AuthProvider from "@/app/context/Auth/AuthProvider";
 import Header from "@/components/Header/header";
 import CartState from "@/app/context/Cart/CartState";
@@ -13,22 +12,25 @@ export const metadata = {
 }
 
 const RootLayout = ({children}) => {
+
     useEffect(() => {
         import('preline')
     }, [])
     return (
-        <html lang="fa" dir={'rtl'} className=''>
-            <script src="./node_modules/preline/dist/preline.js"></script>
-            <body className='text-color-base bg-gray-100'>
-                <AuthProvider>
-                    <CartState>
-                        <Header />
-                        {children}
-                    </CartState>
-                </AuthProvider>
-            </body>
-        </html>
+            <html lang="fa" dir={'rtl'} className=''>
+
+                <body className='text-color-base bg-gray-100'>
+                    <AuthProvider>
+                        <CartState>
+                            <Header />
+                            {children}
+                        </CartState>
+                    </AuthProvider>
+                    <script src="./node_modules/preline/dist/preline.js"></script>
+                </body>
+            </html>
     )
 }
 
 export default RootLayout;
+

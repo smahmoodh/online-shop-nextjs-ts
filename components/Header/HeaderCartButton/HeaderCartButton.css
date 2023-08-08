@@ -1,57 +1,40 @@
+
 .basket-area {
-    @apply w-auto float-left relative cursor-pointer pr-9 border-r-[1px]
+    @apply cursor-pointer w-auto p-0 border-0 float-none clear-both;
+    @apply md:border-r-[1px] md:pr-9 md:relative md:float-left  ;
 }
 .basket-area .basket-toggle {
-    @apply relative inline-flex flex-shrink-0 justify-center items-center h-[3.375rem] w-[3.375rem] rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+    @apply relative inline-flex flex-shrink-0 justify-center items-center h-[3.375rem] w-[3.375rem]   font-medium bg-white text-gray-700 align-middle transition-all text-sm;
+    @apply md:rounded-md md:border md:shadow-sm md:hover:bg-gray-50;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600;
+    @apply dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800;
 }
 .basket-area .basket-toggle svg {
     @apply relative text-gray-400
 }
 .basket-area .basket-toggle .item_counter {
-    @apply absolute top-0 right-0 inline-flex items-center py-0.5 px-1.5 leading-[18px] rounded-full text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-rose-500 text-white
+    @apply absolute top-4 right-3 inline-flex items-center py-0.5 px-1.5 leading-[18px] rounded-full text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-rose-500 text-white;
+    @apply md:top-0 md:right-0;
 }
 .basket-area .basket-toggle .item_counter #basket_items {
-    line-height: 20px;
+    @apply leading-[20px];
 }
 .basket-menu {
-    background: #fff;
+    @apply bg-white
+}
+.shadow-custom {
+    box-shadow: 0 3px 20px 0 rgba(94, 100, 114, .08);
 }
 .basket-area .basket-menu {
-    display: none;
-    position: absolute;
-    z-index: 101;
-    left: 0;
-    cursor: auto;
-    width: 341px;
-    top: 120%;
-    padding: 23px 16.5px;
-    border-radius: 8px;
-    box-shadow: 0 3px 20px 0 rgba(94, 100, 114, .08);
-    background-color: #fff;
-    height: 0;
-    opacity: 0;
-    transition: all .75s ease;
-}
-.mode_mobile .basket-area .basket-menu {
-    left: 0;
-    /*top: 100%;*/
-    right: 0;
-    top: 154px;
-    border-radius: 0;
-    width: 100%;
-}
-.basket-area .basket-menu.active{
-    display: block;
-    opacity: 1;
-    height: auto;
+    @apply hidden absolute left-0 cursor-auto w-full top-[135px] py-6 px-4 shadow-custom bg-white h-0 opacity-0 transition-all delay-[0.75s] ease-in-out z-[101];
+    @apply md:top-[120%] md:w-[341px] md:rounded-md
 }
 
+.basket-area .basket-menu.active{
+    @apply block opacity-100 h-auto
+}
 .basket-menu #basket ul.basket-items {
-    max-height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    direction: ltr;
-    color: #000;
+    @apply max-h-[300px] overflow-x-hidden overflow-y-auto text-gray-600 ;
 }
 #basket #basket_free {
     text-align: center;

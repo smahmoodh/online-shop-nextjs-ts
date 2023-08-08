@@ -7,7 +7,7 @@ const HeaderCartItem = ({ items }) => {
     return (
         <>
             {items && (
-                <ul className="basket-items">
+                <ul className="basket-items dir-ltr">
                     {items.map((item, index) =>
                         <li key={index}>
                             <div className="item">
