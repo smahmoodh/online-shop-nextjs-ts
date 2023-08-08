@@ -1,0 +1,12 @@
+.sidemenu__item{
+    @apply flex min-h-[45px] border-b-[1px] border-gray-200 bg-gray-100
+}
+.sidemenu__item-inner{
+    @apply p-4 pr-6 mb-2 text-right float-right border-t-[1px] border-gray-100 w-full bg-white cursor-pointer
+}
+.user-area__toggle{
+    @apply flex justify-start items-center grow
+}
+.user-area__nickname-section{
+    @apply text-sm
+}

@@ -10,3 +10,12 @@ html{
 input{
     @apply rounded-md
 }
+@layer components {
+    .dir-ltr {
+        direction: ltr;
+    }
+
+    .dir-rtl {
+        direction: rtl;
+    }
+}
