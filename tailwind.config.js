@@ -5,7 +5,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    'node_modules/preline/dist/*.js',
+    './node_modules/preline/dist/*.js',
   ],
   theme: {
     extend: {
@@ -13,6 +13,10 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'badge': 'url(/assets/img/badge.svg)'
+      },
+      backgroundPosition: {
+        '50': '50%',
       },
       fontFamily: {
         'dana': ['dana', 'sans-serif'],

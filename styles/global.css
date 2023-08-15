@@ -3,7 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 @import url('./fonts.css');
-
+:root{
+    --primary: rgba(0 137 255/100) ;
+    --special-text: "پیشنهاد ویژه";
+}
 html{
     @apply font-dana-fanum
 }
@@ -17,5 +20,8 @@ input{
 
     .dir-rtl {
         direction: rtl;
+    }
+    .h2{
+        @apply text-[14px] m-0 mr-3 basis-[68%] font-normal;
     }
 }

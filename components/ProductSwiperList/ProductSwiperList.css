@@ -1,0 +1,33 @@
+.swiper-products {
+    @apply bg-white
+}
+
+.swiper-wrapper {
+    @apply bg-[rgba(0,0,0,0)];
+}
+
+.swiper-products .swiper-button-next {
+    @apply ml-[-10px];
+}
+
+.swiper-products .swiper-button-prev {
+    @apply mr-[-10px];
+}
+
+.swiper-products .swiper-button-next {
+    @apply shadow-[1.5px_0_4px_0_rgba(0,0,0,.15)] rounded-[0_5px_5px_0];
+}
+
+.swiper-products .swiper-button-prev {
+    @apply shadow-[-1.5px_0_4px_0_rgba(0,0,0,.15)] rounded-[5px_0_0_5px];
+}
+
+.swiper-products .swiper-button-next,
+.swiper-products .swiper-button-prev {
+    @apply w-[49px] h-[90px] absolute top-1/2 translate-y-[-50%] bg-white mt-[22px] z-[10] cursor-pointer bg-[length:27px_44px] bg-50 bg-no-repeat hidden invisible md:flex md:visible
+}
+
+.swiper-products .swiper-button-next.swiper-button-disabled,
+.swiper-products .swiper-button-prev.swiper-button-disabled {
+    @apply opacity-[.15] cursor-auto pointer-events-auto;
+}

@@ -1,10 +1,12 @@
 'use client'
+
 import {useEffect} from "react";
 import AuthProvider from "@/app/context/Auth/AuthProvider";
 import Header from "@/components/Header/header";
 import CartState from "@/app/context/Cart/CartState";
 
 import '../styles/global.css';
+// import "tw-elements/dist/css/tw-elements.min.css";
 
 export const metadata = {
     title: 'فروشگاه اینترنتی لوازم جانبی',
@@ -23,10 +25,15 @@ const RootLayout = ({children}) => {
                     <AuthProvider>
                         <CartState>
                             <Header />
-                            {children}
+                            <div className=''>
+                                <div className='pt-0 bg-gray-50'>
+                                    <div className='w-full pr-3 pl-3'>
+                                        {children}
+                                    </div>
+                                </div>
+                            </div>
                         </CartState>
                     </AuthProvider>
-                    <script src="./node_modules/preline/dist/preline.js"></script>
                 </body>
             </html>
     )
