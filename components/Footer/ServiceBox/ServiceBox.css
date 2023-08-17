@@ -1,0 +1,6 @@
+.title{
+    @apply mb-2 text-[16px] text-gray-600 leading-6 block
+}
+.subtitle{
+    @apply text-xs text-gray-400 leading-[18px] block
+}

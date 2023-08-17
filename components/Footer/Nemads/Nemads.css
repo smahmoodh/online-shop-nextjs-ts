@@ -1,0 +1,6 @@
+.footer__namads > div{
+    @apply h-[130px] w-[112px] flex justify-center items-center text-center
+}
+.footer__namads > div img{
+    @apply max-h-fit
+}

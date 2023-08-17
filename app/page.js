@@ -7,12 +7,10 @@ import {mongooseConnect} from "@/lib/mongodb";
 import {Product} from "@/models/Product";
 
 const Home = async () => {
-    const featuredProductId = '64aa750f35310b21bc496a10';
-    await mongooseConnect();
-    const featuredProduct = await Product.findById(featuredProductId);
-    const newProducts = await Product.find({}, null, {sort: {'_id': -1}, limit: 10});
-    const newProducts2 = await Product.find({}, null, {sort: {'_id': 1}, limit: 10});
-    console.log(newProducts);
+
+    const newProducts = await getNewProducts();
+    const featuredProduct = await getFeaturedProduct();
+
     {/*
     const [products, setProducts] = useState([]);
     const fetchData = async () => {
@@ -31,7 +29,7 @@ const Home = async () => {
             <div className='w-full'>
                 <Slideshow />
                 <ProductSwiperList products={newProducts}/>
-                <ProductSwiperList products={newProducts2}/>
+                <ProductSwiperList products={featuredProduct}/>
             </div>
         </div>
   )
@@ -39,15 +37,13 @@ const Home = async () => {
 
 export default Home;
 
-// export async function getServerSideProps() {
-//     const featuredProductId = '64aa750f35310b21bc496a10';
-//     await mongooseConnect();
-//     const featuredProduct = await Product.findById(featuredProductId);
-//     const newProducts = await Product.find({}, null, {sort: {'_id': -1}, limit: 10});
-//     return {
-//         props: {
-//             featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
-//             newProducts: JSON.parse(JSON.stringify(newProducts)),
-//         }
-//     }
-// }
+async function getNewProducts() {
+    await mongooseConnect();
+    const newProducts = await Product.find({}, null, {sort: {'_id': -1}, limit: 10});
+    return JSON.parse(JSON.stringify(newProducts))
+}
+async function getFeaturedProduct() {
+    await mongooseConnect();
+    const featuredProduct = await Product.find({}, null, {sort: {'_id': 1}, limit: 10});
+    return JSON.parse(JSON.stringify(featuredProduct))
+}

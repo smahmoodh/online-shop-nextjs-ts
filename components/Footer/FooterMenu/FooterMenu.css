@@ -1,0 +1,14 @@
+.footer__menu>li{
+    @apply block w-1/2 float-right mb-3 pb-[15px];
+    @apply md:w-1/3
+}
+.footer__menu>li>a{
+    @apply block text-xs text-gray-500 pb-[10px] font-bold leading-[25px] text-right md:text-base md:pb-[20px]
+}
+.footer__menu>li> ul>li a{
+    @apply block py-[10px] px-0 text-xs text-right text-gray-500 leading-4 font-normal;
+    @apply  md:py-3 md:text-sm
+}
+.footer__menu>li> ul>li:first-child a{
+    @apply pt-0
+}
