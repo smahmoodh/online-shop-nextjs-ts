@@ -1,9 +1,16 @@
+.widget__header:before{
+    @apply h-4 w-4 mt-0 absolute content-[''] bg-widgetIcon bg-[length:16px_16px] bg-no-repeat top-1/2 right-0 -translate-y-1/2;
+    @apply md:top-8 md:right-8 md:mt-0.5 md:translate-y-0
+}
+.widget__header:after{
+    @apply block clear-both content-['']
+}
 .swiper-products {
-    @apply bg-white
+    @apply md:bg-white
 }
 
-.swiper-wrapper {
-    @apply bg-[rgba(0,0,0,0)];
+.swiper-products .swiper-wrapper {
+    @apply bg-[rgba(0,0,0,0)] md:pb-8;
 }
 
 .swiper-products .swiper-button-next {

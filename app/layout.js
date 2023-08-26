@@ -21,13 +21,13 @@ const RootLayout = ({ children }) => {
   }, []);
   return (
     <html lang="fa" dir={"rtl"} className="">
-      <body className="text-color-base bg-gray-100">
+      <body className="text-color-base bg-gray-50">
         <AuthProvider>
           <CartState>
             <Header />
-            <div className="">
+            <div className="mt-[137px] md:mt-[125px] pt-6">
               <div className="pt-0 bg-gray-50">
-                <div className="container mx-auto">{children}</div>
+                <div className="container px-4 mx-auto">{children}</div>
               </div>
             </div>
             <Footer />

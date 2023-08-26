@@ -18,6 +18,7 @@ module.exports = {
         "footer-app": "url(/assets/img/footer-app.png)",
         android: "url(/assets/img/android.svg)",
         ios: "url(/assets/img/apple.svg)",
+        widgetIcon: "url(/assets/img/title-arrow.png)",
       },
       backgroundPosition: {
         50: "50%",

@@ -1,5 +1,7 @@
 
-
+.slideshow .swiper-button-next, .slideshow .swiper-button-prev{
+    @apply hidden invisible md:flex md:visible
+}
 .autoplay-progress{
     @apply absolute font-dana text-xs right-4 bottom-4 w-[30px] h-[30px] md:text-sm md:w-[48px] md:h-[48px] flex items-center justify-center font-bold text-primary z-10
 }

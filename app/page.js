@@ -3,15 +3,15 @@ import Slideshow from "@/components/Slideshow/Slideshow";
 // import Product from "@/components/ProductItem/Product";
 import ProductSwiperList from "@/components/ProductSwiperList/ProductSwiperList";
 // import {useEffect, useState} from "react";
-import {mongooseConnect} from "@/lib/mongodb";
-import {Product} from "@/models/Product";
+import { mongooseConnect } from "@/lib/mongodb";
+import { Product } from "@/models/Product";
 
 const Home = async () => {
+  const newProducts = await getNewProducts();
+  const featuredProduct = await getFeaturedProduct();
 
-    const newProducts = await getNewProducts();
-    const featuredProduct = await getFeaturedProduct();
-
-    {/*
+  {
+    /*
     const [products, setProducts] = useState([]);
     const fetchData = async () => {
         const response = await fetch("https://json.xstack.ir/api/v1/products?limit=15")
@@ -22,28 +22,45 @@ const Home = async () => {
 
     useEffect(() => {
         fetchData()
-    }, [])*/}
-    return (
-        // container max-w-8xl mx-auto px-4 sm:px-6 md:px-8
-        <div className="flex flex-col gap-6">
-            <div className='w-full'>
-                <Slideshow />
-                <ProductSwiperList products={newProducts}/>
-                <ProductSwiperList products={featuredProduct}/>
-            </div>
+    }, [])*/
+  }
+  return (
+    // container max-w-8xl mx-auto px-4 sm:px-6 md:px-8
+    <div className="flex flex-col gap-6">
+      <div className="w-full">
+        <div className="mb-6 md:mb-5">
+          <Slideshow />
         </div>
-  )
-}
+        <ProductSwiperList
+          products={newProducts}
+          title={"جدیدترین ها"}
+          url={"#"}
+        />
+        <ProductSwiperList
+          products={featuredProduct}
+          title={"پرفروش ترین ها"}
+          url={"#"}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default Home;
 
 async function getNewProducts() {
-    await mongooseConnect();
-    const newProducts = await Product.find({}, null, {sort: {'_id': -1}, limit: 10});
-    return JSON.parse(JSON.stringify(newProducts))
+  await mongooseConnect();
+  const newProducts = await Product.find({}, null, {
+    sort: { _id: -1 },
+    limit: 10,
+  });
+  return JSON.parse(JSON.stringify(newProducts));
 }
 async function getFeaturedProduct() {
-    await mongooseConnect();
-    const featuredProduct = await Product.find({}, null, {sort: {'_id': 1}, limit: 10});
-    return JSON.parse(JSON.stringify(featuredProduct))
+  await mongooseConnect();
+  const featuredProduct = await Product.find({}, null, {
+    sort: { _id: 1 },
+    limit: 10,
+  });
+  return JSON.parse(JSON.stringify(featuredProduct));
 }

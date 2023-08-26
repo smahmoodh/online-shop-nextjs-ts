@@ -1,0 +1,16 @@
+.thumb__badges li:before{
+    @apply content-[''] absolute top-0 bottom-0 -left-2 h-[18px] w-[9px] bg-badge bg-no-repeat bg-contain
+}
+.thumb__badges .badge__off:after{
+    @apply content-['حراج']
+}
+.thumb__badges .badge__special:after{
+    @apply content-['ویژه']
+}
+
+.title__span{
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
