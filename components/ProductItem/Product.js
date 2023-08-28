@@ -15,7 +15,8 @@ const ProductItem = ({ product }) => {
               [&>li]:relative [&>li]:bg-primary [&>li]:w-10 [&>li]:h-[18px] [&>li]:mb-1 [&>li]:leading-[18px] [&>li]:text-xs [&>li]:font-light [&>li]:text-white
               "
           >
-            <li className="badge__off"></li>
+            {product.hasDiscount ?
+              <li className="badge__off"></li> : ''}
           </ul>
           <Link
             href={`/product/${product._id}`}
@@ -57,12 +58,11 @@ const ProductItem = ({ product }) => {
                 </span>
               </div>
               <div
-                className={`price-area__old-price items-center mb-2 leading-6 font-dana-fanum gap-x-[6px] ${
-                  product.hasDiscount ? "flex" : "hidden"
-                }`}
+                className={`price-area__old-price items-center mb-2 leading-6 font-dana-fanum gap-x-[6px] ${product.hasDiscount ? "flex" : "hidden"
+                  }`}
               >
                 <span className="old-price__off-percent block h-5 px-1 text-primary text-xs font-medium rounded bg-blue-50">
-                  {calcDiscount(product.price, product.price * 1.8, 1)}%
+                  {calcDiscount(product.price, product.discountPrice, 1)}%
                 </span>
                 <span className="old-price__amount text-sm font-normal text-gray-300 line-through">
                   {seperatNumber(product.price)}

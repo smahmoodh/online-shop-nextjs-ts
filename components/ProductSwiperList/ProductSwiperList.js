@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "./ProductSwiperList.css";
 import Link from "next/link";
 
-const ProductSwiperList = ({ products, title, url }) => {
+const ProductSwiperList = ({ products, title, url, showMoreLink }) => {
   return (
     <section className="widget clear-both text-justify mb-[10px] md:rounded-sm md:bg-white md:mb-8 md:shadow-[0_1px_2px_0_rgba(0,0,0,.15)]">
       <div
@@ -24,11 +24,14 @@ const ProductSwiperList = ({ products, title, url }) => {
         >
           {title}
         </span>
-        <span className="w-auto m-0 float-left leading-6 text-xs text-primary text-left md:text-base md:leading-[26px]">
-          <Link className="text-primary" href={url}>
-            مشاهده همه
-          </Link>
-        </span>
+        {showMoreLink ?
+          <span className="w-auto m-0 float-left leading-6 text-xs text-primary text-left md:text-base md:leading-[26px]">
+            <Link className="text-primary" href={url}>
+              مشاهده همه
+            </Link>
+          </span>
+          :
+          ''}
       </div>
       <div>
         <div className="swiper-products mt-5">

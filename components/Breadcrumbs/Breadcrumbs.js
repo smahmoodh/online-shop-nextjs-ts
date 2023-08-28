@@ -45,7 +45,7 @@ const Breadcrumbs = async ({ id, type }) => {
 
   return (
     <>
-      <div className="breadcrumbs clearfix p-0 mb-5 text-xs text-right flex items-center gap-y-0 gap-x-2 leading-[18px]">
+      <div className="breadcrumbs clearfix p-0 pl-6 md:pl-0 mb-4 md:mb-5 text-xs text-right flex items-center gap-y-0 gap-x-2 leading-[18px] whitespace-nowrap overflow-x-auto md:overflow-hidden">
         {path.length > 0 &&
           path.map((item, index) =>
             path.length > index + 1 ? (

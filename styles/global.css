@@ -3,16 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 @import url('./fonts.css');
-:root{
-    --primary: rgba(0 137 255/100) ;
+
+:root {
+    --primary: #0089ff;
+    --primary2: #007be6;
     --special-text: "پیشنهاد ویژه";
 }
-html{
+
+html {
     @apply font-dana
 }
-input{
+
+input {
     @apply rounded-md
 }
+
+ul,
+li {
+    @apply list-none m-0 p-0;
+}
+
 @layer components {
     .dir-ltr {
         direction: ltr;
@@ -21,10 +31,61 @@ input{
     .dir-rtl {
         direction: rtl;
     }
-    h1,.h1{
+
+    h1,
+    .h1 {
         @apply text-[19px] font-dana font-bold leading-[27px]
     }
-    .h2{
+
+    .h2 {
         @apply text-[14px] m-0 mr-3 basis-[68%] font-normal;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 px-4 min-w-[133px] h-10 border border-gray-300 rounded-md shadow-md text-base bg-white text-gray-700 transition-all duration-200 ease-in-out;
+    }
+
+    .btn:hover {
+        @apply bg-gray-200;
+    }
+
+    .btn-primary-hover.btn:hover {
+        @apply bg-blue-400 border-blue-400 text-white;
+    }
+
+    .btn.btn-primary {
+        @apply bg-blue-500 border-blue-500 shadow-md text-white;
+    }
+
+    .btn.btn-primary:hover {
+        @apply bg-blue-400 border-blue-400;
+    }
+
+    .btn.btn-primary-o {
+        @apply bg-white border border-gray-300 shadow-sm text-blue-500;
+    }
+
+    .btn.btn-primary-o:hover {
+        @apply text-white bg-blue-500 border-blue-500;
+    }
+
+    .btn.btn-lg {
+        @apply h-12 px-5;
+    }
+
+    .btn.btn-sm {
+        @apply h-8 min-w-[122px];
+    }
+
+    .btn.btn-block {
+        @apply flex;
+    }
+
+    .btn.btn-success {
+        @apply bg-green-500 border-green-500 shadow-sm text-white;
+    }
+
+    .btn.btn-success:hover {
+        @apply bg-green-600 border-green-600;
     }
 }

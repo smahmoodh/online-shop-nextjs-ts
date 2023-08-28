@@ -35,11 +35,13 @@ const Home = async () => {
           products={newProducts}
           title={"جدیدترین ها"}
           url={"#"}
+          showMoreLink={true}
         />
         <ProductSwiperList
           products={featuredProduct}
           title={"پرفروش ترین ها"}
           url={"#"}
+          showMoreLink={true}
         />
       </div>
     </div>
