@@ -1,0 +1,11 @@
+.input-group {
+    @apply h-8 w-full relative flex flex-wrap items-center leading-[30px]
+}
+
+.input-group button {
+    @apply w-auto h-auto block p-0 border-none shadow-none leading-none
+}
+
+.input-group>.form-control {
+    @apply relative flex-auto w-[1%] min-w-0 mb-0
+}

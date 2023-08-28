@@ -1,0 +1,11 @@
+.product-services__item {
+    @apply basis-0 flex-grow max-w-full text-center
+}
+
+.product-services__item img {
+    @apply block mx-auto mb-2 max-w-full
+}
+
+.product-services__item span {
+    @apply block text-[10px] text-gray-400 font-light
+}
