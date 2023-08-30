@@ -37,7 +37,7 @@ next-env.d.ts
 
 
 #fonts
-.eot
-.ttf
-.woff
-.woff2
+*.eot
+*.ttf
+*.woff
+*.woff2
