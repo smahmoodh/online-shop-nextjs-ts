@@ -14,7 +14,7 @@ const ChangeQuantity = () => {
 
     return (
         <>
-            <div className="input-group h-8 !w-[100px] leading-8 rounded-2xl border-[1px] border-gray-300 flex-row-reverse overflow-hidden items-center">
+            <div className="input-group h-8 !w-[100px] leading-8 rounded-2xl border  border-gray-300 flex-row-reverse overflow-hidden items-center">
                 <span className="h-auto py-1 px-2 overflow-hidden leading-none">
                     <button type="button" aria-label="spin-down" className="" onClick={() => quantity('min')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-[18px] h-[18px]">

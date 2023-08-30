@@ -7,7 +7,7 @@ import "./Product.css";
 const ProductItem = ({ product }) => {
   return (
     <div id="product-item-185804" className="price_on product-item-cont">
-      <div className="product-item relative bg-white mr-0 p-3 rounded border-[1px] border-transparent transition-all duration-[.2s] ease-in-out md:p-6 md:mr-4 hover:border-gray-200 md:hover:shadow-[0_4px_8px_0_rgba(0,0,0,.08)]">
+      <div className="product-item relative bg-white mr-0 p-3 rounded border  border-transparent transition-all duration-[.2s] ease-in-out md:p-6 md:mr-4 hover:border-gray-200 md:hover:shadow-[0_4px_8px_0_rgba(0,0,0,.08)]">
         <div className="item__thumb relative bg-white text-center -mx-2 mb-4 pt-6 md:-mx-3 md:mb-6">
           <ul
             className="

@@ -10,7 +10,7 @@ const AppBox = () => {
         </span>
         <div className="app-box-links md:absolute md:top-1/2 md:right-0 md:-translate-y-1/2">
           <Link
-            className="block mb-4 leading-10 h-10 w-full min-w-[168px] pl-3 rounded-sm shadow-[0_3px_5px_0_rgba(0,0,0,0.05)] border-[1px] border-gray-100 bg-white transition-all duration-[0.2s] ease-in-out"
+            className="block mb-4 leading-10 h-10 w-full min-w-[168px] pl-3 rounded-sm shadow-[0_3px_5px_0_rgba(0,0,0,0.05)] border  border-gray-100 bg-white transition-all duration-[0.2s] ease-in-out"
             href="#"
           >
             <i className="float-right h-10 overflow-hidden text-gray-400 text-base w-[18px] leading-10 text-center ml-[10px] mr-[14px] bg-android bg-no-repeat bg-center bg-contain"></i>
@@ -19,7 +19,7 @@ const AppBox = () => {
             </span>
           </Link>
           <Link
-            className="block mb-4 leading-10 h-10 w-full min-w-[168px] pl-3 rounded-sm shadow-[0_3px_5px_0_rgba(0,0,0,0.05)] border-[1px] border-gray-100 bg-white transition-all duration-[0.2s] ease-in-out"
+            className="block mb-4 leading-10 h-10 w-full min-w-[168px] pl-3 rounded-sm shadow-[0_3px_5px_0_rgba(0,0,0,0.05)] border  border-gray-100 bg-white transition-all duration-[0.2s] ease-in-out"
             href="#"
           >
             <i className="float-right h-10 overflow-hidden text-gray-400 text-base w-[18px] leading-10 text-center ml-[10px] mr-[14px] bg-ios bg-no-repeat bg-center bg-contain"></i>

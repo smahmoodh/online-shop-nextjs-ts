@@ -8,7 +8,7 @@ import "./ServiceBox.css";
 
 const ServiceBox = () => {
   return (
-    <div className={"rounded-sm border-[1px] border-[#e6e6e6] bg-[#fafafa]"}>
+    <div className={"rounded-sm border  border-[#e6e6e6] bg-[#fafafa]"}>
       <ul
         className="flex items-center justify-between text-center
                     [&>li]:py-[25px] [&>li]:px-[10px] [&>li]:border-l-[1px] [&>li]:border-[#e6e6e6] [&>li]:text-center [&>li]:block [&>li]:w-full

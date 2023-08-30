@@ -9,3 +9,21 @@
 .input-group>.form-control {
     @apply relative flex-auto w-[1%] min-w-0 mb-0
 }
+
+.product-attributes ul li,
+.product-features ul li {
+    @apply relative pr-4 leading-8 text-sm whitespace-nowrap text-ellipsis overflow-hidden
+}
+
+.product-attributes ul li::before,
+.product-features ul li::before {
+    @apply absolute top-4 right-0 h-[6px] w-[6px] rounded-[50%] -translate-y-1/2 content-['']
+}
+
+.product-attributes ul li::before {
+    @apply bg-gray-500
+}
+
+.product-features ul li::before {
+    @apply bg-primary
+}

@@ -11,12 +11,59 @@ import ProductServiceBox from "@/components/ProductServiceBox/ProductServiceBox"
 
 import { calcDiscount, seperatNumber } from "@/utils/Utilities";
 
-import './page.css'
+import "./page.css";
 import ProductSwiperList from "@/components/ProductSwiperList/ProductSwiperList";
-
+import ProductInfoBox from "@/components/ProductInfoBox/ProductInfoBox";
+import FiveRatingStar from "@/components/FiveRatingStar/FiveRatingStar";
+import ProductCommentList from "@/components/ProductCommentList/ProductCommentList";
 
 const Page = async ({ params }) => {
   await mongooseConnect();
+  const comments = [
+    {
+      "name": "علی",
+      "date": "سه شنبه 9 خرداد 1402 - 13:14",
+      "message": "سلام، میشه بگید موجود میشه یا نه چون این مدل قابلیت بلوتوث و شارژ وایرلس داره و سایر مدل ها ندارند",
+      "hasReply": true,
+      "reply":
+        [{
+          "name": "مدیر",
+          "date": "سه شنبه 9 خرداد 1402 - 15:14",
+          "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
+          "hasReply": false
+        },
+        {
+          "name": "مدیر",
+          "date": "سه شنبه 9 خرداد 1402 - 15:14",
+          "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
+          "hasReply": false
+        }]
+    },
+    {
+      "name": "علی",
+      "date": "سه شنبه 9 خرداد 1402 - 13:14",
+      "message": "سلام، میشه بگید موجود میشه یا نه چون این مدل قابلیت بلوتوث و شارژ وایرلس داره و سایر مدل ها ندارند",
+      "hasReply": true,
+      "reply": [{
+        "name": "مدیر",
+        "date": "سه شنبه 9 خرداد 1402 - 15:14",
+        "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
+        "hasReply": false
+      }]
+    },
+    {
+      "name": "علی",
+      "date": "سه شنبه 9 خرداد 1402 - 13:14",
+      "message": "سلام، میشه بگید موجود میشه یا نه چون این مدل قابلیت بلوتوث و شارژ وایرلس داره و سایر مدل ها ندارند",
+      "hasReply": true,
+      "reply": [{
+        "name": "مدیر",
+        "date": "سه شنبه 9 خرداد 1402 - 15:14",
+        "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
+        "hasReply": false
+      }]
+    }
+  ];
   const { id } = params;
   let catInfo;
   let relatedProducts = [];
@@ -24,7 +71,6 @@ const Page = async ({ params }) => {
   const catId = product.category;
   product.category = await Category.findById(catId);
   const productProperties = product.properties;
-  console.log(productProperties);
   const propertiesToFill = [];
   const categories = await Category.find();
 
@@ -38,7 +84,9 @@ const Page = async ({ params }) => {
 
     if (category.parent) {
       // اگر دسته بندی فعلی parent داشته باشد، دسته بندی parent را پیدا می‌کنیم و properties آن را جمع‌آوری می‌کنیم
-      const parentCategory = categories.find(cat => cat._id.equals(category.parent));
+      const parentCategory = categories.find((cat) =>
+        cat._id.equals(category.parent),
+      );
 
       if (parentCategory) {
         collectedProperties.push(...collectProperties(parentCategory));
@@ -49,18 +97,23 @@ const Page = async ({ params }) => {
   }
   // console.log(categories);
   if (categories.length > 0 && product.category) {
-
     catInfo = categories.find(
       (category) => category._id.toString() === catId.toString(),
     );
 
     relatedProducts = await Product.find({ category: catId });
     const productIdToRemove = product._id.toString();
-    relatedProducts = JSON.parse(JSON.stringify(relatedProducts.filter((product) => product._id.toString() !== productIdToRemove)));
+    relatedProducts = JSON.parse(
+      JSON.stringify(
+        relatedProducts.filter(
+          (product) => product._id.toString() !== productIdToRemove,
+        ),
+      ),
+    );
 
     propertiesToFill.push(...collectProperties(product.category));
   }
-  console.log(propertiesToFill);
+
   const propertyHandler = (e) => { };
 
   return (
@@ -109,6 +162,7 @@ const Page = async ({ params }) => {
                 </ul>
               </div>
             </div>
+
             <div className="flex flex-wrap items-center gap-y-0 gap-x-[10px] py-3 px-4">
               <div className="max-w-full flex items-center gap-x-4 flex-grow basis-0 text-gray-300 ">
                 <span>
@@ -171,16 +225,19 @@ const Page = async ({ params }) => {
                   <div>
                     {propertiesToFill.length > 0 &&
                       propertiesToFill.map((p) => (
-                        <div key={p.name} className="flex items-center p-0 mb-4">
+                        <div
+                          key={p.name}
+                          className="flex items-center p-0 mb-4"
+                        >
                           <label className="w-[72px] m-0 text-sm flex-shrink-0 leading-7 font-normal">
                             {p.name}
                           </label>
                           <select
                             value={productProperties[p.name] || p.values[0]}
-                            className="h-[38px] py-[6px] px-3 block w-full leading-normal text-sm font-normal bg-white border-[1px] border-[#ced4da] rounded transition-[border-color_.15s_ease-in-out,box-shadow_.15s_ease-in-out"
+                            className="h-[38px] py-[6px] px-3 block w-full leading-normal text-sm font-normal bg-white border  border-[#ced4da] rounded transition-[border-color_.15s_ease-in-out,box-shadow_.15s_ease-in-out"
                           >
                             {p.values.map((val, index) => (
-                              <option key={index} value={val} >
+                              <option key={index} value={val}>
                                 {val}
                               </option>
                             ))}
@@ -189,24 +246,34 @@ const Page = async ({ params }) => {
                       ))}
                   </div>
                   <div className="flex items-center mb-4">
-                    <label className="quantity-label w-[72px] m-0 text-sm flex-shrink-0" htmlFor="quantity">تعداد:</label>
+                    <label
+                      className="quantity-label w-[72px] m-0 text-sm flex-shrink-0"
+                      htmlFor="quantity"
+                    >
+                      تعداد:
+                    </label>
                     <ChangeQuantity />
                   </div>
                 </div>
                 <div className="price-area max-w-full flex flex-col mb-2">
                   <div className="mb-3 flex gap-x-1.5 leading-6 items-center justify-end font-dana-fanum">
-                    {product.hasDiscount ?
+                    {product.hasDiscount ? (
                       <>
                         <span className=" py-0 px-1 h-[20px] block text-primary bg-blue-100 text-[13px] font-bold rounded dir-ltr">
-                          {calcDiscount(product.price, product.discountPrice, 1)} %
+                          {calcDiscount(
+                            product.price,
+                            product.discountPrice,
+                            1,
+                          )}{" "}
+                          %
                         </span>
                         <span className="pt-0.5 text-sm font-normal text-gray-400 line-through">
                           {seperatNumber(product.price)}
                         </span>
                       </>
-                      :
-                      ''
-                    }
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="flex gap-x-1 items-center justify-end font-dana-fanum ">
                     <span className="text-[20px] font-bold">
@@ -218,7 +285,7 @@ const Page = async ({ params }) => {
                   </div>
                 </div>
                 <div className="fixed left-0 right-0 bottom-0 p-4 bg-white backdrop-blur-lg shadow-[0_-1px_0_0_#e6e6e6] transition-all duration-300 ease-out delay-150 z-[900]">
-                  <Link href='#' className='btn btn-primary btn-lg btn-block'>
+                  <Link href="#" className="btn btn-primary btn-lg btn-block">
                     افزودن به سبد خرید
                   </Link>
                 </div>
@@ -238,7 +305,42 @@ const Page = async ({ params }) => {
               showMoreLink={false}
             />
           </div>
-          <div></div>
+          <div className="product-bottom">
+            <ProductInfoBox className={'features'} title={'ویژگی های محصول'}>
+              <ul>
+                {productProperties && Object.entries(productProperties).map(([key, value], index) => (
+                  <li key={index}>
+                    <span>{key}:&nbsp;</span><span>{value}</span>
+                  </li>
+                )
+
+                )}
+              </ul>
+            </ProductInfoBox>
+            <ProductInfoBox className={'desc'} title={'توضیحات محصول'}>
+              <p className="text-justify text-sm">{product?.description}</p>
+            </ProductInfoBox>
+            <ProductInfoBox className={'attributes'} title={'مشخصات فنی'}>
+              <ul className="">
+                {productProperties && Object.entries(productProperties).map(([key, value], index) => (
+                  <li key={index}>
+                    <span className="mr-0.5 text-gray-400">{key}:&nbsp;</span><span>{value}</span>
+                  </li>
+                ))}
+              </ul>
+            </ProductInfoBox>
+            <ProductInfoBox className={'comments'} title={'نظرات کاربران'}>
+              <div className="rate flex flex-row-reverse gap-x-4 justify-between pb-3 border-b text-left" title="امتیاز 4.5 از 5 توسط 2 کاربر">
+                <div className="rating-container h-[18px] overflow-hidden leading-[18px]">
+                  <FiveRatingStar score={4.5} />
+                </div>
+                <span className="text-sm">امتیاز 4.5 از 5 توسط 2 کاربر</span>
+              </div>
+              <div className="product-comments mb-5 font-dana-fanum">
+                <ProductCommentList comments={comments} />
+              </div>
+            </ProductInfoBox>
+          </div>
         </main>
       </div>
     </>
