@@ -1,11 +1,13 @@
 .product-services__item {
     @apply basis-0 flex-grow max-w-full text-center
 }
-
+.product-services__item > div{
+    @apply md:flex md:items-center md:justify-center md:h-12 md:gap-x-2
+}
 .product-services__item img {
-    @apply block mx-auto mb-2 max-w-full
+    @apply block mx-auto mb-2 max-w-full md:w-6 md:h-auto md:mx-0
 }
 
 .product-services__item span {
-    @apply block text-[10px] text-gray-400 font-light
+    @apply block text-[10px] text-gray-400 font-light md:leading-6 md:text-[13px] md:font-normal
 }

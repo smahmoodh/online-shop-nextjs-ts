@@ -21,7 +21,7 @@ const Breadcrumbs = async ({ id, type }) => {
         (category) => category._id.toString() === currentId.toString(),
       );
       if (currentCategory) {
-        path.push({ title: currentCategory.name, url: currentCategory.path });
+        path.push({ title: currentCategory.name, url: '/category/'+currentCategory.path });
         return helper(currentCategory.parent);
       }
 
@@ -37,10 +37,15 @@ const Breadcrumbs = async ({ id, type }) => {
     path = [...path, ...parentPath];
     path.push({ title: product.title, url: product._id.toString() });
   } else if (type === "category") {
-    const category = await Category.findById(id);
-    const parentPath = await findParent(categories, category._id);
-    path = [...path, ...parentPath];
-    path.push({ title: category.name, url: category.path });
+    // const category = await Category.findById(id);
+    const category = await categories.find(category => category.path === id);
+    console.log(category);
+    if (category.parent) {
+      const parentPath = await findParent(categories, category._id);
+      path = [...path, ...parentPath];
+    } else {
+      path.push({ title: category.name, url: '/category/' + category.path });
+    }
   }
 
   return (

@@ -1,0 +1,40 @@
+/* src/components/Tabs.css */
+.tabs-container {
+    @apply relative md:flex md:flex-col md:mx-auto md:bg-white md:rounded md:shadow-[0_1px_2px_0_rgba(0,0,0,0.15)] md:mb-8;
+}
+
+.tabs {
+    @apply border-b mb-[60px]
+}
+
+.tab-list {
+    @apply w-full max-w-full px-[10px] mx-auto flex flex-wrap list-none;
+}
+
+.tab-list li.tab {
+    @apply leading-[62px] ml-[85px] relative min-w-[60px] cursor-pointer
+}
+
+.tab-list li.tab p {
+    @apply flex items-center relative px-[10px] leading-[62px] text-base font-light transition-all duration-[0.2s]
+}
+
+.tab-list li.tab p::before {
+    @apply content-[''] absolute -bottom-1 right-0 h-[3px] bg-primary w-full opacity-0 rounded-t-[3px] transition-all duration-[0.2s]
+}
+
+.tab-list li.tab.active p::before {
+    @apply -bottom-[1px] opacity-100
+}
+
+.tab-list li.tab i {
+    @apply leading-[62px] float-right ml-4 text-[22px] transition-all duration-[0.2s]
+}
+
+.tab.active {
+    @apply bg-white text-primary
+}
+
+.tab-content {
+    @apply md:px-[10px] md:pb-10 md:w-full md:mx-auto md:max-w-full md:overflow-hidden
+}

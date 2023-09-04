@@ -27,7 +27,7 @@ const RootLayout = ({ children }) => {
             <Header />
             <div className="mt-[137px] md:mt-[125px] pt-6">
               <div className="pt-0 bg-gray-50">
-                <div className="container px-4 mx-auto">{children}</div>
+                <div className="xl:container px-4 mx-auto">{children}</div>
               </div>
             </div>
             <Footer />

@@ -9,42 +9,53 @@ import './ProductServiceBox.css'
 
 const ProductServiceBox = () => {
     return (
-        <div className="product-services__container flex flex-wrap py-4 px-[10px]">
+        <div
+            className="product-services__container flex flex-wrap py-4 px-[10px]
+            md:pt-6 md:pb-8 md:-mx-6
+        ">
             <div className="product-services__item">
-                <Image
-                    src={cartReturnImg}
-                    alt={"cart Return Img"}
-                    width={24}
-                    height={24}
-                />
-                <span>ضمانت بازگشت</span>
+                <div>
+                    <Image
+                        src={cartReturnImg}
+                        alt={"cart Return Img"}
+                        width={24}
+                        height={24}
+                    />
+                    <span>ضمانت بازگشت</span>
+                </div>
             </div>
             <div className="product-services__item">
-                <Image
-                    src={guarantyImg}
-                    alt={"guaranty Img"}
-                    width={24}
-                    height={24}
-                />
-                <span>ضمانت اصالت</span>
+                <div>
+                    <Image
+                        src={guarantyImg}
+                        alt={"guaranty Img"}
+                        width={24}
+                        height={24}
+                    />
+                    <span>ضمانت اصالت</span>
+                </div>
             </div>
             <div className="product-services__item">
-                <Image
-                    src={deliveryFastImg}
-                    alt={"delivery Fast Img"}
-                    width={24}
-                    height={24}
-                />
-                <span>تحویل اکسپرس</span>
+                <div>
+                    <Image
+                        src={deliveryFastImg}
+                        alt={"delivery Fast Img"}
+                        width={24}
+                        height={24}
+                    />
+                    <span>تحویل اکسپرس</span>
+                </div>
             </div>
             <div className="product-services__item">
-                <Image
-                    src={paymentImg}
-                    alt={"payment Img"}
-                    width={24}
-                    height={24}
-                />
-                <span>پرداخت در محل</span>
+                <div>
+                    <Image
+                        src={paymentImg}
+                        alt={"payment Img"}
+                        width={24}
+                        height={24}
+                    />
+                    <span>پرداخت در محل</span>
+                </div>
             </div>
         </div>
     )
