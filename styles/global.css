@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('./fonts.css');
 
 :root {
     --primary: #0089ff;
@@ -17,12 +16,18 @@ html {
 input {
     @apply rounded-md
 }
-
+input[type="text"],
+input[type="number"],
+textarea {
+    @apply !text-base;
+}
 ul,
 li {
     @apply list-none m-0 p-0;
 }
-
+hr{
+    @apply border-t border-gray-200 my-4 -mx-6 overflow-visible h-0
+}
 @layer components {
     .dir-ltr {
         direction: ltr;
@@ -87,5 +92,20 @@ li {
 
     .btn.btn-success:hover {
         @apply bg-green-600 border-green-600;
+    }
+
+    .btn.btn-link{
+        @apply bg-transparent rounded-none border-0 border-b-[3px] border-transparent shadow-none
+    }
+
+    .btn.btn-link.btn-default {
+        @apply border-primary shadow-none text-primary
+    }
+
+    .form-control {
+        @apply block w-full h-[calc(1.5em+0.75rem+2px)] py-1.5 px-3 text-base font-normal leading-normal text-gray-700 bg-white bg-clip-padding border border-gray-300 rounded transition-colors duration-150 ease-in-out hover:border-blue-500 hover:shadow-md
+    }
+    .form-control:focus {
+        @apply text-gray-700 bg-white border border-blue-300 outline-none shadow-md ring ring-blue-500 ring-opacity-25
     }
 }

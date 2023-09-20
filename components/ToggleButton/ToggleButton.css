@@ -1,0 +1,15 @@
+.filter-box__toggle-slide-area{
+    @apply w-auto float-right ml-[10px]
+}
+.filter-box__filter-toggler{
+    @apply h-[26px] w-[46px] rounded-[30px] relative cursor-pointer bg-gray-400 transition-all duration-200 ease-in
+}
+.filter-box__filter-toggler.filter-box__filter-toggler--active{
+    @apply bg-primary
+}
+.filter-toggler__circ{
+    @apply absolute top-0.5 right-0.5 rounded-[50%] h-[22px] w-[22px] bg-white shadow-[0_2px_0_0_rgba(0,0,0,.04),0_4px_7px_rgba(0,0,0,.13),0_2px_2px_rgba(0,0,0,.05)] transition-all duration-200 ease-in
+}
+.filter-box__filter-toggler.filter-box__filter-toggler--active .filter-toggler__circ{
+    @apply right-[22px]
+}
