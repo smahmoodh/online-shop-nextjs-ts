@@ -1,15 +1,17 @@
-'use client'
+// 'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+// import { useState } from 'react';
 import { mongooseConnect } from '@/lib/mongodb';
 import { Product } from '@/models/Product';
+import { Category } from '@/models/Category';
 
 import BoxTitleBar from '@/components/BoxTitleBar/BoxTitleBar';
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
 import ToggleButton from '@/components/ToggleButton/ToggleButton';
 
 import './page.css'
+import ProductItem from '@/components/ProductItem/Product';
+
 
 
 
@@ -23,23 +25,27 @@ export const metadata = {
 
 
 
-const CategoryPage = ({ params, products, initialSort, sortType, limit }) => {
+const CategoryPage = async ({ params }) => {
     const { id } = params;
-    // console.log('CategoryPage');
+    const { path } = params;
+    console.log('path', params.path);
+    let products = await getCategoryProducts(params.path);
+    // 
     console.log(products);
-    const router = useRouter();
-    const [sort, setSort] = useState(initialSort);
+
+    // const [sort, setSort] = useState(initialSort);
 
     // const handleChangeLimit = (limitCount) => {
     //     const updatedUrl = `?sort=${sort}&limit=${limitCount}`;
     //     router.push(updatedUrl, undefined, { shallow: true });
     // };
 
-    const handleChangeSort = async (sortModel) => {
-        setSort(sortModel);
-        const updatedUrl = `?sort=${sortModel}&limit=${limit}&sortType=${sortType}`;
-        router.push(updatedUrl, undefined, { shallow: true });
-    };
+    // const handleChangeSort = async (sortModel) => {
+    //     setSort(sortModel);
+    //     const updatedUrl = `?sort=${sortModel}&limit=${limit}&sortType=${sortType}`;
+    //     router.push(updatedUrl, undefined, { shallow: true });
+    // };
+
 
     return (
         <>
@@ -90,7 +96,7 @@ const CategoryPage = ({ params, products, initialSort, sortType, limit }) => {
                                                 </div>
                                                 <div className="filter_products__filter-box" id="filter_status">
                                                     <div className="filter-box__clearfix filter_area" data-filter="status">
-                                                        <ToggleButton/>
+                                                        <ToggleButton />
                                                         <label className="filter-box__filter-label-inline inline" for="status">فقط آیتم‌های موجود</label>
                                                     </div>
                                                     <hr className="filter-box__hr" />
@@ -129,22 +135,25 @@ const CategoryPage = ({ params, products, initialSort, sortType, limit }) => {
                                         <div className="filter__items m-0 mb-6 border-b border-gray-200 lg:grid lg:grid-cols-12">
                                             <div className='col-span-8'>
                                                 <div className='btn__sorts inline-flex items-center '>
-                                                    {/*
+                                                    
                                                     <button type='button' className={`btn btn-link btn-default`} >جدیدترین ها</button>
                                                     <button type='button' className={`btn btn-link `}  >پرفروشترین ها</button>
                                                     <button type='button' className={`btn btn-link `} >ارزان‌ترین ها</button>
                                                     <button type='button' className={`btn btn-link `} >گران‌ترین ها</button>
-                                                    */}
-                                                     <button type='button' className={`btn btn-link ${sort === 'new' ? 'btn-default' : ''}`} onClick={() => handleChangeSort('new')}>جدیدترین ها</button>
+                                                {/*    
+                                                    <button type='button' className={`btn btn-link ${sort === 'new' ? 'btn-default' : ''}`} onClick={() => handleChangeSort('new')}>جدیدترین ها</button>
                                                     <button type='button' className={`btn btn-link ${sort === 'sales' ? 'btn-default' : ''}`} onClick={() => handleChangeSort('sales')}>پرفروشترین ها</button>
                                                     <button type='button' className={`btn btn-link ${sort === 'price' && sortType === 'asc' ? 'btn-default' : ''}`} onClick={() => handleChangeSort('lowprice')}>ارزان‌ترین ها</button>
-                                                    <button type='button' className={`btn btn-link ${sort === 'price' && sortType === 'desc' ? 'btn-default' : ''}`} onClick={() => handleChangeSort('highprice')}>گران‌ترین ها</button> 
+                                                    <button type='button' className={`btn btn-link ${sort === 'price' && sortType === 'desc' ? 'btn-default' : ''}`} onClick={() => handleChangeSort('highprice')}>گران‌ترین ها</button>
+                                                */}
                                                 </div>
                                             </div>
                                             <div className='col-span-4'></div>
                                         </div>
                                         <div className="products">
-
+                                            {products.length > 0 && products.map((product) => (
+                                                <ProductItem product={product} slider={true} />
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -161,31 +170,24 @@ const CategoryPage = ({ params, products, initialSort, sortType, limit }) => {
 export default CategoryPage
 
 
-export async function getServerSideProps({ params, query }) {
-    const { id } = params;
-    const initialSort = query.sort || 'view';
-    const sortType = query.sortType || 'desc';
-    const limit = query.limit || 24;
+async function getCategoryProducts(path) {
 
 
     await mongooseConnect();
-
     let products;
-    if (id) {
-        products = await Product.find({ category: { $eq: id } }, null, { sort: { '_id': -1 } });
+    const categoryName = path;
+
+    console.log('categoryName', categoryName);
+    const category = await Category.findOne({ path: categoryName });
+
+    if (category) {
+        products = await Product.find({ category: category._id });
     } else {
         products = await Product.find({}, null, { sort: { '_id': -1 } });
     }
 
     products = JSON.parse(JSON.stringify(products));
     console.log('getServerSideProps');
-    console.log(products);
-    return {
-        props: {
-            products,
-            initialSort,
-            sortType,
-            limit
-        },
-    };
+    // console.log(products);
+    return products
 }
