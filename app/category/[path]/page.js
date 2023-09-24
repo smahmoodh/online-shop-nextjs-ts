@@ -13,14 +13,18 @@ import './page.css'
 import ProductItem from '@/components/ProductItem/Product';
 
 
+export async function generateMetadata({ params, searchParams }, parent) {
+    // read route params
+    const path = params.path
+    const category = await Category.findOne({ path: path });
 
 
-
-export const metadata = {
-    title: "فروشگاه اینترنتی لوازم جانبی - دسته بندی محصولات",
-    description:
-        "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
-};
+    return {
+        title: process.env.SHOP_TITLE + ' | دسته بندی محصولات ' + category.name + ' - ' + category.enName,
+        description:
+            "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
+    }
+}
 
 
 
@@ -49,9 +53,9 @@ const CategoryPage = async ({ params }) => {
 
     return (
         <>
-            <div className='category'>
+            <div className='category md:-mx-[15px]'>
                 <Breadcrumbs id={params.path} type={"category"} />
-                <main className="md:block md:flex-grow-0 md:flex-shrink-0 md:basis-full md:max-w-full md:relative md:w-full md:px-4">
+                <main className="md:block md:flex-grow-0 md:flex-shrink-0 md:basis-full md:max-w-full md:relative md:w-full">
                     <div className='md:grid md:grid-cols-12'>
                         <div className="px-4 md:min-h-screen md:overflow-visible md:relative md:col-span-12 lg:col-span-3">
                             <div className='md:pt-0 md:pb-[1px] lg:sticky lg:top-[130px]'>
@@ -122,7 +126,7 @@ const CategoryPage = async ({ params }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="px-4 md:col-span-12 lg:col-span-9 ">
+                        <div className="md:px-4 md:col-span-12 lg:col-span-9 ">
                             <div className='box'>
                                 <div className='content'>
                                     <div className='hidden invisible lg:visible lg:block mb-6'>
@@ -153,7 +157,7 @@ const CategoryPage = async ({ params }) => {
                                         <div className="products">
                                             <div className="products__items grid grid-cols-12 -mr-2 -ml-2 mb-8">
                                                 {products.length > 0 && products.map((product) => (
-                                                    <div className='lg:col-span-3 sm:col-span-4 col-span-6 px-2 mb-4'>
+                                                    <div className='lg:col-span-4 sm:col-span-4 col-span-6 px-2 mb-4'>
                                                         <ProductItem product={product} slider={true} />
                                                     </div>
                                                 ))}

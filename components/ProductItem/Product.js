@@ -10,7 +10,7 @@ const ProductItem = ({ product }) => {
       <Link
         href={`/product/${product._id}`}
         title={product.title}
-        className="product-item relative block bg-white mr-0 p-3 rounded border  border-transparent transition-all duration-[.2s] ease-in-out shadow-[0_1px_2px_0_rgba(0,0,0,.15)] md:p-6 hover:border-gray-200 md:hover:!shadow-[0_4px_8px_0_rgba(0,0,0,.08)]">
+        className="product-item relative block bg-white mr-0 p-3 rounded border  border-transparent transition-all duration-[.2s] ease-in-out shadow-[0_4px_8px_0_rgba(0,0,0,.08)] md:shadow-[0_1px_2px_0_rgba(0,0,0,.15)] md:p-6 hover:border-gray-200 md:hover:!shadow-[0_4px_8px_0_rgba(0,0,0,.08)]">
         <div className="item__thumb relative bg-white text-center -mx-2 md:-mx-3 md:mb-6">
           <ul
             className="
@@ -45,7 +45,7 @@ const ProductItem = ({ product }) => {
             </span>
           </div>
           <div className="details__bottom flex flex-wrap items-end">
-            <div className="bottom__price-area max-w-full min-h-[54px] flex flex-col-reverse basis-auto grow  ">
+            <div className="bottom__price-area max-w-full min-h-[54px] flex flex-col-reverse basis-auto grow items-end md:items-start ">
               <div className="price-area__price flex items-center font-dana-fanum leading-6 gap-x-1">
                 <span className="price__amount text-lg font-semibold">
                   {product.hasDiscount
@@ -68,7 +68,7 @@ const ProductItem = ({ product }) => {
                 </span>
               </div>
             </div>
-            <div className="bottom__rate flex grow-0 flex-shrink-0 basis-auto w-auto max-w-full items-center flex-row-reverse font-dana-fanum [&>span]:block [&>span]:text-xs [&>span]:mr-0.5 [&>span]:mt-[3px] [&>span]:font-normal">
+            <div className="bottom__rate hidden md:flex grow-0 flex-shrink-0 basis-auto w-auto max-w-full items-center flex-row-reverse font-dana-fanum [&>span]:block [&>span]:text-xs [&>span]:mr-0.5 [&>span]:mt-[3px] [&>span]:font-normal">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
