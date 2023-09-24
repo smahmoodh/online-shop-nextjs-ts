@@ -31,7 +31,7 @@ const CategoryPage = async ({ params }) => {
     console.log('path', params.path);
     let products = await getCategoryProducts(params.path);
     // 
-    console.log(products);
+    // console.log(products);
 
     // const [sort, setSort] = useState(initialSort);
 
@@ -151,9 +151,13 @@ const CategoryPage = async ({ params }) => {
                                             <div className='col-span-4'></div>
                                         </div>
                                         <div className="products">
-                                            {products.length > 0 && products.map((product) => (
-                                                <ProductItem product={product} slider={true} />
-                                            ))}
+                                            <div className="products__items grid grid-cols-12 -mr-2 -ml-2 mb-8">
+                                                {products.length > 0 && products.map((product) => (
+                                                    <div className='lg:col-span-3 sm:col-span-4 col-span-6 px-2 mb-4'>
+                                                        <ProductItem product={product} slider={true} />
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

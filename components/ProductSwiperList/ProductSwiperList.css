@@ -31,3 +31,8 @@
 .swiper-products .swiper-button-prev.swiper-button-disabled {
     @apply opacity-[.15] cursor-auto pointer-events-auto;
 }
+
+.product-slide .product-item
+{
+    @apply shadow-transparent
+}
