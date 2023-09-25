@@ -11,6 +11,7 @@ import ToggleButton from '@/components/ToggleButton/ToggleButton';
 
 import './page.css'
 import ProductItem from '@/components/ProductItem/Product';
+import Link from 'next/link';
 
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -53,9 +54,9 @@ const CategoryPage = async ({ params }) => {
 
     return (
         <>
-            <div className='category md:-mx-[15px]'>
+            <div className='category '>
                 <Breadcrumbs id={params.path} type={"category"} />
-                <main className="md:block md:flex-grow-0 md:flex-shrink-0 md:basis-full md:max-w-full md:relative md:w-full">
+                <main className="md:-mx-[15px] md:block md:flex-grow-0 md:flex-shrink-0 md:basis-full md:max-w-full md:relative md:w-full">
                     <div className='md:grid md:grid-cols-12'>
                         <div className="px-4 md:min-h-screen md:overflow-visible md:relative md:col-span-12 lg:col-span-3">
                             <div className='md:pt-0 md:pb-[1px] lg:sticky lg:top-[130px]'>
@@ -157,10 +158,25 @@ const CategoryPage = async ({ params }) => {
                                         <div className="products">
                                             <div className="products__items grid grid-cols-12 -mr-2 -ml-2 mb-8">
                                                 {products.length > 0 && products.map((product) => (
-                                                    <div className='lg:col-span-4 sm:col-span-4 col-span-6 px-2 mb-4'>
+                                                    <div className='xl:col-span-3 lg:col-span-4 sm:col-span-4 col-span-6 px-2 mb-4'>
                                                         <ProductItem product={product} slider={true} />
                                                     </div>
                                                 ))}
+                                            </div>
+                                            <div className='pageslist mb-6'>
+                                                <nav class="flex items-center justify-center gap-x-2 [&>a]:font-dana-fanum">
+                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">
+                                                        <span aria-hidden="true">«</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </Link>
+                                                    <Link class="w-8 h-8 bg-primary text-white flex items-center justify-center text-sm font-medium rounded-md leading-8" href="#" aria-current="page">1</Link>
+                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">2</Link>
+                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">3</Link>
+                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">
+                                                        <span class="sr-only">Next</span>
+                                                        <span aria-hidden="true">»</span>
+                                                    </Link>
+                                                </nav>
                                             </div>
                                         </div>
                                     </div>
@@ -169,6 +185,7 @@ const CategoryPage = async ({ params }) => {
                         </div>
                     </div>
                 </main>
+                
             </div>
 
         </>
