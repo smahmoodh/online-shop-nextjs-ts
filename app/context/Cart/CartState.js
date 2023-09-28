@@ -1,63 +1,33 @@
-"use client"
+import React, { createContext, useReducer } from 'react';
+import cartReducer from '@/app/context/Cart/CartReducer';
 
-import { useReducer } from "react";
-import CartContext from './CartContext';
-import CartReducer from "./CartReducer";
-// import { sumItems } from "./CartReducer";
+const initialState = {
+    cart: [], // یک آرایه برای ذخیره آیتم‌ها در سبد خرید
+};
 
-const CartState = ({ children }) => {
-    //   Initial State of the cart
-    const initialState = {
-        cartItems: [],
-        checkout: false,
+const CartContext = createContext(initialState);
+
+const CartProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(cartReducer, initialState);
+
+    // اضافه کردن توابع دیگر برای مدیریت سبد خرید
+    const addToCart = (item) => {
+        dispatch({ type: 'ADD_TO_CART', payload: item });
     };
 
-    //Set up the reducer
-    const [state, dispatch] = useReducer(CartReducer, initialState);
-
-    //Function to handle when an item is added from the store into the Cart
-    const addToCart = (payload) => {
-        dispatch({ type: "ADD_TO_CART", payload });
+    const removeFromCart = (item) => {
+        dispatch({ type: 'REMOVE_FROM_CART', payload: item });
     };
 
-    //Function to handle when an item that is in the cart is added again
-    const increase = (payload) => {
-        dispatch({ type: "INCREASE", payload });
-    };
-
-    //Function to handle when an item is removed from the cart
-    const decrease = (payload) => {
-        dispatch({ type: "DECREASE", payload });
-    };
-
-    //Function to remove an item from the cart
-    const removeFromCart = (payload) => {
-        dispatch({ type: "REMOVE_ITEM", payload });
-    };
-
-    //Function to clear the cart
-    const clearCart = () => {
-        dispatch({ type: "CLEAR" });
-    };
-
-    //Function to handle when the user clicks the checkout button
-    const handleCheckout = () => {
-        dispatch({ type: "CHECKOUT" });
-    };
+    // دیگر توابع...
 
     return (
-        //Add the functions that have been defined above into the Context provider, and pass on to the children
         <CartContext.Provider
             value={{
-                showCart: state.showCart,
-                cartItems: state.cartItems,
+                cart: state.cart,
                 addToCart,
                 removeFromCart,
-                increase,
-                decrease,
-                handleCheckout,
-                clearCart,
-                ...state,
+                // سایر توابع...
             }}
         >
             {children}
@@ -65,4 +35,4 @@ const CartState = ({ children }) => {
     );
 };
 
-export default CartState;
+export { CartContext, CartProvider };
