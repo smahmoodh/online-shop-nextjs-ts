@@ -8,7 +8,10 @@ const Breadcrumbs = async ({ id, type }) => {
   await mongooseConnect();
   let path = [];
   path.push({ title: "خانه", url: "/" });
+
   const categories = await Category.find();
+
+
 
   // Define a function that takes the categories array and the current category id as parameters
   const findParent = async (categories, catId) => {
@@ -21,7 +24,7 @@ const Breadcrumbs = async ({ id, type }) => {
         (category) => category._id.toString() === currentId.toString(),
       );
       if (currentCategory) {
-        path.push({ title: currentCategory.name, url: '/category/'+currentCategory.path });
+        path.push({ title: currentCategory.name, url: '/category/' + currentCategory.path });
         return helper(currentCategory.parent);
       }
 
@@ -46,6 +49,8 @@ const Breadcrumbs = async ({ id, type }) => {
     } else {
       path.push({ title: category.name, url: '/category/' + category.path });
     }
+  } else if (type === "cart") {
+    path.push({ title: 'سبد خرید', url: '/cart' });
   }
 
   return (
