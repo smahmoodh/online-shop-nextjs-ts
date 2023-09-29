@@ -19,6 +19,7 @@ module.exports = {
         android: "url(/assets/img/android.svg)",
         ios: "url(/assets/img/apple.svg)",
         widgetIcon: "url(/assets/img/title-arrow.png)",
+        emptyCart: "url(/assets/img/cart-empty.svg)",
       },
       backgroundPosition: {
         50: "50%",

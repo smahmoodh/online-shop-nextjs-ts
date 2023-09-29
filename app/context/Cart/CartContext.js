@@ -1,6 +1,6 @@
 // app/context/cartContext.tsx
 "use client"
-import React, { createContext, useReducer } from "react"
+import React, { useEffect, createContext, useReducer, useState } from "react"
 
 // Define the initial cart state
 const initialState = {
@@ -16,6 +16,7 @@ const cartReducer = (state, action) => {
             const existingItem = state.items.find(
                 item => item.id === action.payload.id
             )
+            let itemPrice = (action.payload.hasDiscount ? action.payload.discountPrice : action.payload.price);
             if (existingItem) {
                 // Increment the quantity of the existing item
                 return {
@@ -25,14 +26,14 @@ const cartReducer = (state, action) => {
                             ? { ...item, quantity: item.quantity + 1 }
                             : item
                     ),
-                    total: state.total + action.payload.price
+                    total: state.total + itemPrice
                 }
             } else {
                 // Add the new item to the cart
                 return {
                     ...state,
                     items: [...state.items, { ...action.payload, quantity: 1 }],
-                    total: state.total + action.payload.price
+                    total: state.total + itemPrice
                 }
             }
         case "REMOVE_ITEM":
@@ -68,6 +69,12 @@ const CartContext = createContext({
 const CartProvider = ({ children }) => {
     // Use the useReducer hook to get the current state and dispatch function
     const [state, dispatch] = useReducer(cartReducer, initialState);
+    const [context, setContext] = useState({ state, dispatch });
+
+    // اگر state یا dispatch تغییر کنند، مقدار context را به روز کنید
+    useEffect(() => {
+        setContext({ state, dispatch });
+    }, [state, dispatch]);
 
     const addToCart = (item) => {
         console.log('addToCart context');
@@ -77,7 +84,7 @@ const CartProvider = ({ children }) => {
 
     // Return the provider component with the value prop set to the state and dispatch
     return (
-        <CartContext.Provider value={{ addToCart, state, dispatch }}>
+        <CartContext.Provider value={{ addToCart, ...context }}>
             {children}
         </CartContext.Provider>
     )
