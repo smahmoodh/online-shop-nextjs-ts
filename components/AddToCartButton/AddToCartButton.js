@@ -1,8 +1,6 @@
 'use client'
 import { useContext } from "react";
-// import CartContext from "@/app/context/Cart/CartContext";
 import { CartContext } from "@/app/context/Cart/CartContext";
-import Link from "next/link";
 
 
 const AddToCartButton = ({product}) => {
@@ -21,7 +19,6 @@ const AddToCartButton = ({product}) => {
           <button className="w-full btn btn-primary btn-lg btn-block" onClick={handleAddToCart}>
               افزودن به سبد خرید
           </button>
-          <Link href='/cart'>Cart</Link>
       </>
   )
 }

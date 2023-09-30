@@ -23,7 +23,7 @@
     @apply bg-white
 }
 .shadow-custom {
-    box-shadow: 0 3px 20px 0 rgba(94, 100, 114, .08);
+    @apply shadow-[0_3px_20px_0_rgba(94,100,114,.08)];
 }
 .basket-area .basket-menu {
     @apply hidden absolute left-0 cursor-auto w-full top-[135px] py-6 px-4 shadow-custom bg-white h-0 opacity-0 transition-all delay-[0.75s] ease-in-out z-[101];
@@ -37,69 +37,30 @@
     @apply max-h-[300px] overflow-x-hidden overflow-y-auto text-gray-600 ;
 }
 #basket #basket_free {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    @apply text-center my-10
 }
 #basket #basket_free .free-img {
-    content: "";
-    background-image: url('../../../public/assets/img/empty-cart.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: relative;
-    padding: 80px;
-    height: 184px;
-    width: 160px;
-    display: block;
-    margin: 27px auto;
+    @apply content-[""] bg-emptyCart bg-center bg-no-repeat bg-contain relative p-20 h-[184px] w-[160px] block my-7 mx-auto;
 }
 #basket #basket_free .free-title {
-    line-height: 24px;
-    font-size: 16px;
-    color: #666;
+    @apply leading-6 text-base text-gray-400
 }
 
 .basket-area #basket #checkout {
-    border-top: solid 1px #e6e6e6;
-    font: bold 11px/22px dana, Arial;
-    text-align: center;
-    margin: 0 -16.5px;
-    padding: 16px 16px 0;
+    @apply border-t font-bold text-xs leading-[22px] text-center -mx-4 p-4 pb-0
 }
 #basket #checkout .sum_basket_title {
-    text-align: left;
-    height: 16px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #2e343b;
+    @apply text-left h-4 text-sm font-bold font-dana-fanum
 }
 #basket #checkout .price-section {
-    float: left;
+    @apply float-left;
 }
 #basket #checkout .sum-prices-currency {
-    height: 16px;
-    font-size: 12px;
-    font-weight: normal;
-    color: #666;
+    @apply h-4 text-xs text-gray-600 font-semibold
 }
 #basket #checkout .number {
-    float: right;
-    line-height: 14px;
-    font-size: 11px;
-    font-weight: normal;
-    text-align: right;
-    color: #666;
+    @apply float-right leading-[14px] text-xs font-normal text-right text-gray-600;
 }
 .basket-area #basket #checkout #checkout_link {
-    display: block;
-    width: 100%;
-    margin: 16px auto 0;
-    border-radius: 4px;
-    box-shadow: 0 3px 5px 0 rgba(0, 137, 255, .32);
-    background-color: #0089ff;
-    font-size: 14px;
-    color: #fff;
-    line-height: 26px;
-    padding: 6px 0;
+    @apply block w-full mt-4 mx-auto mb-0 rounded shadow-[0_3px_5px_0_rgba(0,137,255,.32)] bg-primary text-sm leading-6 py-[6px] text-white
 }

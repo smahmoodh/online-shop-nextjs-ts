@@ -120,6 +120,8 @@ const Page = async ({ params }) => {
     );
 
     propertiesToFill.push(...collectProperties(product.category));
+    console.log("propertiesToFill")
+    console.log(propertiesToFill)
   }
 
   const propertyHandler = (e) => { };
@@ -281,7 +283,7 @@ const Page = async ({ params }) => {
                             )}
                           </div>
                           <div className="product-basket-top min-h-auto md:px-8 md:pb-8 md:mt-6 ">
-                            <div>
+                            <div className={`${propertiesToFill.length}`}>
                               {propertiesToFill.length > 0 &&
                                 propertiesToFill.map((p) => (
                                   <div
