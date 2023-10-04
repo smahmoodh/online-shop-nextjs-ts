@@ -1,4 +1,4 @@
-import React from "react";
+
 import Link from "next/link";
 import { mongooseConnect } from "@/lib/mongodb";
 
@@ -20,8 +20,12 @@ import HeartIcon from "@/components/Icons/Heart";
 import ShareIcon from "@/components/Icons/Share";
 import ProductBigBadge from "@/components/ProductBigBadge/ProductBigBadge";
 import ProductInfoTabs from "@/components/ProductInfoTabs/ProductInfoTabs";
+import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
+
+
 
 const Page = async ({ params }) => {
+  
   await mongooseConnect();
   const comments = [
     {
@@ -116,6 +120,8 @@ const Page = async ({ params }) => {
     );
 
     propertiesToFill.push(...collectProperties(product.category));
+    console.log("propertiesToFill")
+    console.log(propertiesToFill)
   }
 
   const propertyHandler = (e) => { };
@@ -277,7 +283,7 @@ const Page = async ({ params }) => {
                             )}
                           </div>
                           <div className="product-basket-top min-h-auto md:px-8 md:pb-8 md:mt-6 ">
-                            <div>
+                            <div className={`${propertiesToFill.length}`}>
                               {propertiesToFill.length > 0 &&
                                 propertiesToFill.map((p) => (
                                   <div
@@ -342,9 +348,7 @@ const Page = async ({ params }) => {
                           <div className="fixed left-0 right-0 bottom-0 p-4 bg-white backdrop-blur-lg shadow-[0_-1px_0_0_#e6e6e6] transition-all duration-300 ease-out delay-150 z-[900]
                             md:relative md:block md:left-auto md:right-auto md:bottom-auto md:bg-transparent md:border-none md:shadow-none md:backdrop-blur-none md:z-auto
                           ">
-                            <Link href="#" className="btn btn-primary btn-lg btn-block">
-                              افزودن به سبد خرید
-                            </Link>
+                            <AddToCartButton product={product} />
                           </div>
                         </div>
                       </div>
