@@ -22,7 +22,18 @@ import ProductBigBadge from "@/components/ProductBigBadge/ProductBigBadge";
 import ProductInfoTabs from "@/components/ProductInfoTabs/ProductInfoTabs";
 import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
 
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  const id = params.id
+  const product = await Product.findById(id);
 
+
+  return {
+    title: process.env.SHOP_TITLE + ' | مشخصات و قیمت ' + product.title,
+    description:
+      "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
+  }
+}
 
 const Page = async ({ params }) => {
   
