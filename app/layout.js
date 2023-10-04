@@ -10,11 +10,7 @@ import "@/styles/global.css";
 import "@/styles/fonts.css";
 // import "tw-elements/dist/css/tw-elements.min.css";
 
-export const metadata = {
-  title: "فروشگاه اینترنتی لوازم جانبی",
-  description:
-    "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
-};
+
 
 const RootLayout = ({ children }) => {
   useEffect(() => {

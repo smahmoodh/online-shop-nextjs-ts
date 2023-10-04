@@ -6,6 +6,12 @@ import ProductSwiperList from "@/components/ProductSwiperList/ProductSwiperList"
 import { mongooseConnect } from "@/lib/mongodb";
 import { Product } from "@/models/Product";
 
+export const metadata = {
+  title: "فروشگاه اینترنتی لوازم جانبی",
+  description:
+    "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
+};
+
 const Home = async () => {
   const newProducts = await getNewProducts();
   const featuredProduct = await getFeaturedProduct();
