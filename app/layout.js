@@ -6,7 +6,8 @@ import CartState from "@/app/context/Cart/CartState";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/Footer";
 
-import "../styles/global.css";
+import "@/styles/global.css";
+import "@/styles/fonts.css";
 // import "tw-elements/dist/css/tw-elements.min.css";
 
 export const metadata = {

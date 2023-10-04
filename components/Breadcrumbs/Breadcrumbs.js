@@ -42,7 +42,7 @@ const Breadcrumbs = async ({ id, type }) => {
   } else if (type === "category") {
     // const category = await Category.findById(id);
     const category = await categories.find(category => category.path === id);
-    console.log(category);
+    // console.log(category);
     if (category.parent) {
       const parentPath = await findParent(categories, category._id);
       path = [...path, ...parentPath];

@@ -23,7 +23,7 @@ const BoxTitleBar = ({ title, showMoreLink = false, url = '#', type, icon }) => 
                     {title}
                 </h1>
             );
-        } else if (type === 'box') {
+        } else if ( type === 'box') {
             return (
                 <span className={typeStyle.className}>
                     {title}
@@ -38,7 +38,7 @@ const BoxTitleBar = ({ title, showMoreLink = false, url = '#', type, icon }) => 
         }
     }
     return (
-        <div className={`widget__header ${icon ? 'has-icon' : ''} ${type + '-'}header`}>
+        <div className={`widget__header ${icon ? 'has-icon' : ''} ${type +'-'}header`}>
             {renderContent()}
             {showMoreLink ?
                 <span className="w-auto m-0 float-left leading-6 text-xs text-primary text-left md:text-base md:leading-[26px]">

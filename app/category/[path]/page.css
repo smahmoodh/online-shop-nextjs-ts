@@ -1,0 +1,37 @@
+.filter_products__filter-box{
+    @apply md:px-6
+}
+.filter_products__filter-box .filter-box__label{
+    @apply text-xs md:text-sm md:font-semibold md:block md:leading-6 md:mb-4
+}
+.filter_products__filter-box#filter_special{
+    @apply pb-4
+}
+.filter-box__checkboxes{
+    @apply relative max-h-80 overflow-y-auto
+}
+.filter-box__checkboxes li.filter-box__checkbox{
+    @apply m-0 p-0
+}
+.filter-box__checkboxes li.filter-box__checkbox .checkbox__label {
+    @apply text-sm font-normal cursor-pointer flex items-center justify-between p-1 m-0 w-full
+}
+.filter-box__checkboxes li.filter-box__checkbox .checkbox__label .checkbox__inputbox{
+    @apply inline-flex gap-x-1.5
+}
+.filter-box__checkboxes li.filter-box__checkbox .checkbox__label .checkbox__input{
+
+}
+.filter-box__checkboxes li.filter-box__checkbox .checkbox__label .checkbox__span {
+    @apply float-left text-[80%] text-gray-400
+}
+
+.btn__sorts{
+
+}
+.btn__sorts button {
+    @apply h-8 min-w-fit p-0 m-0 ml-6 pb-4 text-xs font-normal leading-6 text-right inline-block 
+}
+.btn__sorts button:first-child {
+    @apply mr-0
+}
