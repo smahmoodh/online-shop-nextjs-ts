@@ -16,7 +16,7 @@ const cartReducer = (state, action) => {
             const existingItemIndex = state.items.findIndex(
                 item => item._id === action.payload._id
             );
-            let itemPrice = (action.payload.hasDiscount ? action.payload.discountPrice : action.payload.price);
+            var itemPrice = (action.payload.hasDiscount ? action.payload.discountPrice : action.payload.price);
             if (existingItemIndex !== -1) {
                 // Increment the quantity of the existing item
                 const updatedItems = state.items.map((item, index) =>
@@ -40,13 +40,14 @@ const cartReducer = (state, action) => {
             }
         case "REMOVE_ITEM":
             // Find the item to be removed
-            const itemToRemove = state.items.find(item => item._id === action.payload._id)
+            const itemToRemove = state.items.find(item => item._id === action.payload._id);
+            var itemPrice = (itemToRemove.hasDiscount ? itemToRemove.discountPrice : itemToRemove.price);
             if (itemToRemove) {
                 // Subtract the item's price from the total
                 return {
                     ...state,
                     items: state.items.filter(item => item._id !== action.payload._id),
-                    total: state.total - itemToRemove.price * itemToRemove.quantity
+                    total: state.total - itemPrice * itemToRemove.quantity
                 }
             } else {
                 // Return the original state if the item is not found

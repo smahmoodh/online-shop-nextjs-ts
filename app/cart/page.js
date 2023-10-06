@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,24 +11,44 @@ import ChangeQuantity from '@/components/ChangeQualtity/ChangeQuantity';
 
 import './page.css'
 
+export const metadata = {
+    title: "فروشگاه اینترنتی لوازم جانبی | سبد خرید",
+    description:
+        "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
+};
+
 const ShoppingCart = () => {
     const { state, removeFromCart } = useContext(CartContext);
     // console.log('state');
     // console.log(state);
     const { items } = state;
 
-    const totalDiscount = items.reduce((total, item) => {
-        // اگر محصول تخفیف دار است، مقدار تخفیف به مجموع تخفیف‌ها اضافه شود
-        if (item.hasDiscount) {
-            total += item.price - item.discountPrice;
-        }
-        return total;
-    }, 0);
-    const totalPrice = items.reduce((total, item) => {
-        // اگر محصول تخفیف دار است، مقدار تخفیف به مجموع تخفیف‌ها اضافه شود
-        total += item.price;
-        return total;
-    }, 0);
+    const [totalDiscount, setTotalDiscount] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0)
+
+    const calcTotalDiscount = () => {
+        setTotalDiscount(items.reduce((total, item) => {
+            // اگر محصول تخفیف دار است، مقدار تخفیف به مجموع تخفیف‌ها اضافه شود
+            if (item.hasDiscount) {
+                total += item.price - item.discountPrice;
+            }
+            return total;
+        }, 0));
+    }
+    const calcTotalPrice = () => {
+        setTotalPrice(items.reduce((total, item) => {
+            // اگر محصول تخفیف دار است، مقدار تخفیف به مجموع تخفیف‌ها اضافه شود
+            total += item.price;
+            return total;
+        }, 0))
+    }
+
+
+    useEffect(() => {
+        calcTotalDiscount();
+        calcTotalPrice();
+    }, [state])
+
 
     return (
         <>
@@ -89,7 +109,7 @@ const ShoppingCart = () => {
                                                                             item.price,
                                                                             item.discountPrice,
                                                                             1,
-                                                                        ) * (-1) }{" "}
+                                                                        ) * (-1)}{" "}
                                                                         %
                                                                     </span>
                                                                     <span className='price__old pt-0.5 text-sm font-normal text-gray-400 line-through'>
@@ -112,7 +132,7 @@ const ShoppingCart = () => {
                                                         <td className='item-count w-[45%] float-right md:float-none md:w-auto [&>span]:font-dana-fanum'>
                                                             <span className='h-full block visible text-sm mb-2 md:hidden md:invisible'>تعداد: </span>
                                                             <div className='h-8 leading-8 w-[100px] mb-[10px] md:m-0 md:float-right'>
-                                                                
+
                                                                 <ChangeQuantity />
                                                             </div>
                                                             <span className='leading-8 float-right text-sm mr-0 cursor-pointer md:mr-[20px]' onClick={() => removeFromCart(item)}>
@@ -169,13 +189,13 @@ const ShoppingCart = () => {
                                                         totalPrice,
                                                         state.total,
                                                         1,
-                                                    )*(-1)}{" "}%)
+                                                    ) * (-1)}{" "}%)
                                                     {" "}
                                                     {seperatNumber(totalDiscount)}{" "} تومان
                                                 </div>
-                                            </div>  
+                                            </div>
                                             :
-                                        ''    
+                                            ''
                                         }
                                         <hr className='my-4 md:hidden md:invisible block visible' />
                                         <div>
@@ -183,7 +203,7 @@ const ShoppingCart = () => {
                                             <div>
                                                 {seperatNumber(state.total)}{" "} تومان
                                             </div>
-                                        </div>  
+                                        </div>
                                         <hr className='my-4 hidden invisible md:block md:visible' />
                                         <button className="hidden invisible md:block md:visible w-full btn btn-primary btn-lg btn-block !rounded shadow-[0_3px_5px_0_rgba(0,137,255,.32)]">
                                             ادامه فرآیند خرید
@@ -199,7 +219,7 @@ const ShoppingCart = () => {
                                                 <span>
                                                     {seperatNumber(state.total)}{" "} تومان
                                                 </span>
-</div>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -208,8 +228,8 @@ const ShoppingCart = () => {
                         </div>
                     </>
                 ) : (
-                    <div className='md:col-span-12 px-[15px]'>
-                        <div className='cart__box'>
+                    <div className='col-span-12 -mx-[15px]'>
+                        <div className='cart__box px-[15px]'>
                             <div className='cart__box--header'>
                                 <BoxTitleBar title={'سبد خرید'} icon={true} type={'box'} />
                             </div>

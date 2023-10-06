@@ -30,7 +30,7 @@ const HeaderCartItem = ({ items, removeItemHandler }) => {
                                             <span>{item.quantity} عدد</span>
                                             {/* <span className="item-color">رنگ</span> */}
                                         </span>
-                                        <span className="price-buy font-dana-fanum">{seperatNumber(item.price)} <span>تومان</span></span>
+                                        <span className="price-buy font-dana-fanum">{seperatNumber(item.hasDiscount ? item.discountPrice : item.price)} <span>تومان</span></span>
                                     </div>
                                 </div>
                             </div>
