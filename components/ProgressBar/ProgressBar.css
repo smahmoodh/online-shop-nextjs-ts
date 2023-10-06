@@ -1,0 +1,12 @@
+.loading-container {
+    @apply fixed top-0 left-0 w-full h-[3px] bg-transparent z-[1000];
+}
+
+/* .loading-bar {
+    @apply h-full bg-green-500 transition-all duration-500 ease-in-out;
+} */
+.loading-bar{
+    height: 100%;
+    background-color: rgb(91, 223, 91);
+    transition: width 0.5s ease-in-out;
+}

@@ -68,17 +68,17 @@ const CategoryPage = async ({ params }) => {
                                         <div className="block__body">
                                             <div className="body__filter_products">
                                                 <div className="filter_products__filter-box" id="filter_search">
-                                                    <label className="filter-box__label" for="q">جستجو در نتایج</label>
+                                                    <label className="filter-box__label" htmlFor="q">جستجو در نتایج</label>
                                                     <input placeholder="جستجو..." name="q" id="q" value="" className="filter-box__input form-control" type="text" />
                                                     <hr className="filter-box__hr" />
                                                 </div>
                                                 <div className="filter_products__filter-box" id="filter_brand">
-                                                    <label className="filter-box__label" for="brand_id">برند</label>
+                                                    <label className="filter-box__label" htmlFor="brand_id">برند</label>
                                                     <input placeholder="جستجو در برند ها ..." id="searchBrand" className="filter-box__input form-control mb-3" type="text" />
                                                     <div className="filter-box__brands_list">
                                                         <ul className="filter-box__checkboxes">
                                                             <li className="filter-box__checkbox">
-                                                                <label for="field_brand_id_0" className="checkbox__label">
+                                                                <label htmlFor="field_brand_id_0" className="checkbox__label">
                                                                     <div className='checkbox__inputbox'>
                                                                         <input id="field_brand_id_0" type="checkbox" name="brand_id[]" value="3349" className="checkbox__input" />
                                                                         رسی
@@ -87,7 +87,7 @@ const CategoryPage = async ({ params }) => {
                                                                 </label>
                                                             </li>
                                                             <li className="filter-box__checkbox">
-                                                                <label for="field_brand_id_1" className="checkbox__label">
+                                                                <label htmlFor="field_brand_id_1" className="checkbox__label">
                                                                     <div className='checkbox__inputbox'>
                                                                         <input id="field_brand_id_1" type="checkbox" name="brand_id[]" value="3253" className="checkbox__input" />
                                                                         ارلدام
@@ -102,21 +102,21 @@ const CategoryPage = async ({ params }) => {
                                                 <div className="filter_products__filter-box" id="filter_status">
                                                     <div className="filter-box__clearfix filter_area" data-filter="status">
                                                         <ToggleButton />
-                                                        <label className="filter-box__filter-label-inline inline" for="status">فقط آیتم‌های موجود</label>
+                                                        <label className="filter-box__filter-label-inline inline" htmlFor="status">فقط آیتم‌های موجود</label>
                                                     </div>
                                                     <hr className="filter-box__hr" />
                                                 </div>
                                                 <div className="filter_products__filter-box" id="filter_off">
                                                     <div className="filter-box__clearfix filter_area" data-filter="off">
                                                         <ToggleButton />
-                                                        <label className="filter-box__filter-label-inline inline" for="off">فقط آیتم‌های تخفیف دار</label>
+                                                        <label className="filter-box__filter-label-inline inline" htmlFor="off">فقط آیتم‌های تخفیف دار</label>
                                                     </div>
                                                     <hr className="filter-box__hr" />
                                                 </div>
                                                 <div className="filter_products__filter-box" id="filter_special">
                                                     <div className="filter-box__clearfix filter_area" data-filter="special">
                                                         <ToggleButton />
-                                                        <label className="filter-box__filter-label-inline inline" for="special">فقط آیتم‌های ویژه</label>
+                                                        <label className="filter-box__filter-label-inline inline" htmlFor="special">فقط آیتم‌های ویژه</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,16 +164,16 @@ const CategoryPage = async ({ params }) => {
                                                 ))}
                                             </div>
                                             <div className='pageslist mb-6'>
-                                                <nav class="flex items-center justify-center gap-x-2 [&>a]:font-dana-fanum">
-                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">
+                                                <nav className="flex items-center justify-center gap-x-2 [&>a]:font-dana-fanum">
+                                                    <Link className="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">
                                                         <span aria-hidden="true">«</span>
-                                                        <span class="sr-only">Previous</span>
+                                                        <span className="sr-only">Previous</span>
                                                     </Link>
-                                                    <Link class="w-8 h-8 bg-primary text-white flex items-center justify-center text-sm font-medium rounded-md leading-8" href="#" aria-current="page">1</Link>
-                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">2</Link>
-                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">3</Link>
-                                                    <Link class="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">
-                                                        <span class="sr-only">Next</span>
+                                                    <Link className="w-8 h-8 bg-primary text-white flex items-center justify-center text-sm font-medium rounded-md leading-8" href="#" aria-current="page">1</Link>
+                                                    <Link className="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">2</Link>
+                                                    <Link className="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">3</Link>
+                                                    <Link className="w-8 h-8 text-gray-500 flex items-center justify-center text-sm font-medium rounded-md leading-8 hover:bg-primary hover:text-white" href="#">
+                                                        <span className="sr-only">Next</span>
                                                         <span aria-hidden="true">»</span>
                                                     </Link>
                                                 </nav>
