@@ -11,11 +11,14 @@ import ChangeQuantity from '@/components/ChangeQualtity/ChangeQuantity';
 
 import './page.css'
 
-export const metadata = {
-    title: "فروشگاه اینترنتی لوازم جانبی | سبد خرید",
-    description:
-        "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
-};
+export async function generateMetadata({ params, searchParams }, parent) {
+
+    return {
+        title: process.env.SHOP_TITLE + ' | سبد خرید',
+        description:
+            "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
+    }
+}
 
 const ShoppingCart = () => {
     const { state, removeFromCart } = useContext(CartContext);
