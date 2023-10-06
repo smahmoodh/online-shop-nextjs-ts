@@ -14,6 +14,22 @@ import ProductItem from '@/components/ProductItem/Product';
 import './page.css'
 
 
+export async function generateMetadata({ params, searchParams }, parent) {
+    // read route params
+    const path = params.path
+    const category = await Category.findOne({ path: path });
+
+
+    return {
+        title: process.env.SHOP_TITLE + ' | دسته بندی محصولات ' + category.name + ' - ' + category.enName,
+        description:
+            "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
+    }
+}
+
+
+
+
 const CategoryPage = async ({ params }) => {
     const { id } = params;
     const { path } = params;
