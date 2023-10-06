@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# پروژه فروشگاه آنلاین با استفاده از  Next.js
 
-## Getting Started
 
-First, run the development server:
+## توضیحات
+
+این پروژه یک بازنویسی از نمونه اصلی، سایت [جانبی](https://janebi.com/) با استفاده از Next.js، React و Tailwind css است.
+
+## فهرست مطالب
+
+
+- [نصب](#نصب)
+- [استفاده](#استفاده)
+- [پکیج‌ها](#پکیج-ها)
+- [منابع](#منابع)
+
+# نصب
+
+پس از Clone کردن پروژه با استفاده از یکی از دستورهای زیر باید Package های استفاده شده را نصب کنید:
+```bash
+npm i
+```
+```bash
+npm install
+```
+```bash
+yarn install
+```
+
+# استفاده
+
+پس از نصب تمام پکیج‌های مورد نیاز با استفاده از یکی از دستورهای زیر میتوانید پروژه را اجرا کنید:
+
+*توجه داشته باشید که در مرحله قبل از package manager استفاده کردید.*
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```
+```bash
+yarn run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# پکیج ها
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+در این پروژه از پکیج های زیر استفاده شده است:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![GitHub package.json dependency version (subfolder of monorepo)](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/next)
 
-## Learn More
+![GitHub package.json dependency version (subfolder of monorepo)](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/react)
 
-To learn more about Next.js, take a look at the following resources:
+![GitHub package.json dependency version (subfolder of monorepo)](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/tailwindcss)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![GitHub package.json dependency version (subfolder of monorepo)](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/mongoose)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![GitHub package.json dependency version (subfolder of monorepo)](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/mongodb)
 
-## Deploy on Vercel
+![GitHub package.json dependency version (subfolder of monorepo)](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/swiper)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![GitHub package.json dependency version (subfolder of monorepo)](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/preline)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![smahmoodh](https://img.shields.io/github/package-json/dependency-version/smahmoodh/janebi-online-shop-nextjs/next-auth)
+
+
+
+## منابع
+
+- [NEXT.js](https://nextjs.org/)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Swiper](https://swiperjs.com/)
+- [Webpack](https://webpack.js.org/)
