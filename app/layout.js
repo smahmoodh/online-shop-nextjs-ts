@@ -11,8 +11,6 @@ import "@/styles/fonts.css";
 
 // import "tw-elements/dist/css/tw-elements.min.css";
 
-
-
 const RootLayout = ({ children }) => {
   useEffect(() => {
     import("preline");
@@ -21,7 +19,7 @@ const RootLayout = ({ children }) => {
     <html lang="fa" dir={"rtl"} className="">
       <body className="text-color-base bg-gray-50">
         <AuthProvider>
-          <CartProvider >
+          <CartProvider>
             <Header />
             <div className="mt-[137px] md:mt-[125px] pt-6">
               <div className="pt-0 bg-gray-50">
