@@ -1,0 +1,39 @@
+.message {
+    @apply dir-ltr box-border m-0 p-0 text-black/[.88] text-sm leading-[1.5714285714285714] fixed top-2 w-full pointer-events-none z-[1010]
+}
+
+.message .message-notice-wrapper {
+    @apply p-2 text-center;
+}
+
+.message .message-notice-wrapper .message-notice-content {
+    @apply inline-block px-4 py-[9px] bg-white rounded-lg shadow-[0_6px_16px_0_rgba(0,0,0,0.08),0_3px_6px_-4px_rgba(0,0,0,0.12),0_9px_28px_8px_rgba(0,0,0,0.05)];
+    pointer-events: all;
+}
+
+.message .message-notice-wrapper .message-custom-content>.icon {
+    @apply align-text-bottom me-2 text-base;
+}
+
+.icon {
+    @apply inline-flex items-center text-inherit font-normal leading-[0] text-center align-[-0.125em];
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.message .message-notice-wrapper .message-info>.icon {
+    color: #1677ff;
+}
+
+.message .message-notice-wrapper .message-success>.icon {
+    color: #52c41a;
+}
+
+.message .message-notice-wrapper .message-warning>.icon {
+    color: #faad14;
+}
+
+.message .message-notice-wrapper .message-error>.icon {
+    color: #ff4d4f;
+}
