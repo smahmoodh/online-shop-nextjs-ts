@@ -23,9 +23,8 @@ const AddToCartButton = ({product}) => {
                 position: "top-center",
                 pauseOnHover: true,
                 pauseOnFocusLoss: true,
-                type: 'warning',
+                type: 'success',
                 hasIcon: true,
-                autoClose: 100000
             })
         } catch (error) {
             console.error(error);
