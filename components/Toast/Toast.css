@@ -1,0 +1,177 @@
+/* $rt-namespace: 'Toastify';
+$rt-mobile: 'only screen and (max-width : 480px)' !default; */
+
+:root {
+    --toastify-color-light: #fff;
+    --toastify-color-dark: #121212;
+    --toastify-color-info: #3498db;
+    --toastify-color-success: #07bc0c;
+    --toastify-color-warning: #f1c40f;
+    --toastify-color-error: #e74c3c;
+    --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+
+    --toastify-icon-color-info: var(--toastify-color-info);
+    --toastify-icon-color-success: var(--toastify-color-success);
+    --toastify-icon-color-warning: var(--toastify-color-warning);
+    --toastify-icon-color-error: var(--toastify-color-error);
+
+    --toastify-toast-width: 320px;
+    --toastify-toast-background: #fff;
+    --toastify-toast-min-height: 64px;
+    --toastify-toast-max-height: 800px;
+    --toastify-font-family: sans-serif;
+    --toastify-z-index: 9999;
+
+    --toastify-text-color-light: #757575;
+    --toastify-text-color-dark: #fff;
+
+    --toastify-text-color-info: #fff;
+    --toastify-text-color-success: #fff;
+    --toastify-text-color-warning: #fff;
+    --toastify-text-color-error: #fff;
+
+    --toastify-spinner-color: #616161;
+    --toastify-spinner-color-empty-area: #e0e0e0;
+
+
+    --toastify-color-progress-light: linear-gradient(to right,
+            #4cd964,
+            #5ac8fa,
+            #007aff,
+            #34aadc,
+            #5856d6,
+            #ff2d55);
+    --toastify-color-progress-dark: #bb86fc;
+    --toastify-color-progress-info: var(--toastify-color-info);
+    --toastify-color-progress-success: var(--toastify-color-success);
+    --toastify-color-progress-warning: var(--toastify-color-warning);
+    --toastify-color-progress-error: var(--toastify-color-error);
+}
+
+/*
+-------------------------------------------------------------------------
+*/
+.toast-container {
+    @apply fixed w-full md:w-80 md:m-2.5 mb-2.5 flex flex-col gap-[.5rem] z-[1000];
+}
+
+.toast-container[data-position^="top-"] {
+    @apply top-0;
+}
+
+.toast-container[data-position^="bottom-"] {
+    @apply bottom-0;
+}
+
+.toast-container[data-position$="-right"] {
+    @apply right-0;
+}
+
+.toast-container[data-position$="-left"] {
+    @apply left-0;
+}
+
+.toast-container[data-position$="-center"] {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toast {
+    @apply box-border p-3 pr-8 pl-6 flex items-center justify-between min-h-[64px] max-h-[800px] bg-white relative cursor-pointer overflow-hidden border border-gray-200 rounded-md shadow-[0_6px_16px_0_rgba(0,0,0,0.08),0_3px_6px_-4px_rgba(0,0,0,0.12),0_9px_28px_8px_rgba(0,0,0,0.05)];
+    transition: transform 300ms ease-in-out;
+}
+
+.toast-container[data-position$="-right"] .toast {
+    transform: translateX(110%);
+}
+
+.toast-container[data-position$="-left"] .toast {
+    transform: translateX(-110%);
+}
+
+.toast-container[data-position="top-center"] .toast {
+    transform: translateY(-100vh);
+}
+
+.toast-container[data-position="bottom-center"] .toast {
+    transform: translateY(100vh);
+}
+
+.toast-container .toast.show {
+    transform: translate(0, 0);
+}
+
+.toast.progress::before {
+    @apply content-[''] absolute h-[3px] bg-primary bottom-0 left-0 right-0;
+    width: calc(100% * var(--progress));
+}
+
+.toast .toast-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: none;
+}
+
+.toast.has-icon .toast-icon {
+    display: block;
+}
+
+.toast[data-type="info"]::before,
+.toast.has-icon[data-type="info"] .toast-icon {
+    @apply bg-primary;
+}
+
+.toast[data-type="success"]::before,
+.toast.has-icon[data-type="success"] .toast-icon {
+    @apply bg-[#52c41a];
+}
+
+.toast[data-type="warning"]::before,
+.toast.has-icon[data-type="warning"] .toast-icon {
+    @apply bg-[#faad14];
+}
+
+.toast[data-type="error"]::before,
+.toast.has-icon[data-type="error"] .toast-icon {
+    @apply bg-[#ff4d4f];
+}
+
+.toast.has-icon .toast-icon::after{
+ @apply content-[''] w-[80%] h-[80%] block rounded-full m-auto mt-0.5
+}
+
+.toast.has-icon[data-type="info"] .toast-icon::after {
+    @apply  bg-toastInfoIcon;
+}
+
+.toast.has-icon[data-type="success"] .toast-icon::after {
+    @apply bg-toastSuccessIcon stroke-white;
+}
+
+.toast.has-icon[data-type="warning"] .toast-icon::after {
+    @apply  bg-toastWarningIcon;
+}
+
+.toast.has-icon[data-type="error"] .toast-icon::after {
+    @apply  bg-toastErrorIcon;
+}
+
+
+
+
+
+
+.toast.can-close::after {
+    @apply content-[""] absolute top-0.5 opacity-70 hover:opacity-100 right-[5px] text-[25px] w-4 h-4 bg-close;
+}
+
+@keyframes toast__spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

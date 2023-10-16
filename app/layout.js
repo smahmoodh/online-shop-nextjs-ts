@@ -8,6 +8,7 @@ import Footer from "@/components/Footer/Footer";
 
 import "@/styles/global.css";
 import "@/styles/fonts.css";
+import "@/components/Toast/Toast.css"
 
 // import "tw-elements/dist/css/tw-elements.min.css";
 
@@ -20,6 +21,7 @@ const RootLayout = ({ children }) => {
       <body className="text-color-base bg-gray-50">
         <AuthProvider>
           <CartProvider>
+            {/* <NotificationBox />  */}
             <Header />
             <div className="mt-[137px] md:mt-[125px] pt-6">
               <div className="pt-0 bg-gray-50">
