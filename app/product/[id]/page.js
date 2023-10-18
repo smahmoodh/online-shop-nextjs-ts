@@ -13,9 +13,6 @@ import { calcDiscount, seperatNumber } from "@/utils/Utilities";
 
 import "./page.css";
 import ProductSwiperList from "@/components/ProductSwiperList/ProductSwiperList";
-import ProductInfoBox from "@/components/ProductInfoBox/ProductInfoBox";
-import FiveRatingStar from "@/components/FiveRatingStar/FiveRatingStar";
-import ProductCommentList from "@/components/ProductCommentList/ProductCommentList";
 import HeartIcon from "@/components/Icons/Heart";
 import ShareIcon from "@/components/Icons/Share";
 import ProductBigBadge from "@/components/ProductBigBadge/ProductBigBadge";
@@ -38,51 +35,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
 const Page = async ({ params }) => {
   
   await mongooseConnect();
-  const comments = [
-    {
-      "name": "علی",
-      "date": "سه شنبه 9 خرداد 1402 - 13:14",
-      "message": "سلام، میشه بگید موجود میشه یا نه چون این مدل قابلیت بلوتوث و شارژ وایرلس داره و سایر مدل ها ندارند",
-      "hasReply": true,
-      "reply":
-        [{
-          "name": "مدیر",
-          "date": "سه شنبه 9 خرداد 1402 - 15:14",
-          "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
-          "hasReply": false
-        },
-        {
-          "name": "مدیر",
-          "date": "سه شنبه 9 خرداد 1402 - 15:14",
-          "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
-          "hasReply": false
-        }]
-    },
-    {
-      "name": "علی",
-      "date": "سه شنبه 9 خرداد 1402 - 13:14",
-      "message": "سلام، میشه بگید موجود میشه یا نه چون این مدل قابلیت بلوتوث و شارژ وایرلس داره و سایر مدل ها ندارند",
-      "hasReply": true,
-      "reply": [{
-        "name": "مدیر",
-        "date": "سه شنبه 9 خرداد 1402 - 15:14",
-        "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
-        "hasReply": false
-      }]
-    },
-    {
-      "name": "علی",
-      "date": "سه شنبه 9 خرداد 1402 - 13:14",
-      "message": "سلام، میشه بگید موجود میشه یا نه چون این مدل قابلیت بلوتوث و شارژ وایرلس داره و سایر مدل ها ندارند",
-      "hasReply": true,
-      "reply": [{
-        "name": "مدیر",
-        "date": "سه شنبه 9 خرداد 1402 - 15:14",
-        "message": "سلام دوست عزیز\nدر تلاشیم موجود کنیم\nبا استفاده از گزینه موجود شد به من اطلاع بده از موجودی کالا در اسرع وقت اطلاع پیدا کنید.\nمیتونید از محصولات مشابه هم استفاده کنید",
-        "hasReply": false
-      }]
-    }
-  ];
   const { id } = params;
   let catInfo;
   let relatedProducts = [];
@@ -176,10 +128,10 @@ const Page = async ({ params }) => {
                       <ProductImageGallery images={product.images} />
                       <div className="hidden invisible md:block md:visible md:absolute md:top-8 md:right-8 md:z-10 
                       [&>span]:md:mb-6 [&>span]:md:text-gray-400 [&>span]:md:block [&>span]:md:cursor-pointer">
-                        <span>
+                        <span className="hover:text-red-500">
                           <ShareIcon />
                         </span>
-                        <span>
+                        <span className="hover:text-red-500">
                           <HeartIcon />
                         </span>
                       </div>
@@ -215,10 +167,10 @@ const Page = async ({ params }) => {
                   ">
                     <div className="flex flex-wrap items-center gap-y-0 gap-x-[10px] py-3 px-4 md:hidden md:invisible">
                       <div className="max-w-full flex items-center gap-x-4 flex-grow basis-0 text-gray-300 ">
-                        <span>
+                        <span className="hover:text-red-500">
                           <ShareIcon strokeWidth={2} />
                         </span>
-                        <span>
+                        <span className="hover:text-red-500">
                           <HeartIcon strokeWidth={2} />
                         </span>
                       </div>

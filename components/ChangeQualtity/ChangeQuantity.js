@@ -22,7 +22,7 @@ const ChangeQuantity = () => {
                         </svg>
                     </button>
                 </span>
-                <input type="text" className="h-8 border-none p-0 leading-8 text-center form-control" value={productQuantity} readOnly />
+                <input type="text" className="h-8 border-none p-0 leading-8 text-center form-control" onChange={() => { }} value={productQuantity} readOnly />
                 <span className="h-full py-1 px-2 overflow-hidden leading-none bg-white">
                     <button type="button" aria-label="spin-down" className="" onClick={() => quantity('add')}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-[18px] h-[18px]">
