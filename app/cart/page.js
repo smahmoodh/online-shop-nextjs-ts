@@ -12,7 +12,7 @@ import ChangeQuantity from '@/components/ChangeQualtity/ChangeQuantity';
 import './page.css'
 
 const ShoppingCart = () => {
-    const { state, removeFromCart } = useContext(CartContext);
+    const { state, removeFromCart, increaseCartItem, decreaseCartItem } = useContext(CartContext);
     // console.log('state');
     // console.log(state);
     const { items } = state;
@@ -24,7 +24,7 @@ const ShoppingCart = () => {
         setTotalDiscount(items.reduce((total, item) => {
             // اگر محصول تخفیف دار است، مقدار تخفیف به مجموع تخفیف‌ها اضافه شود
             if (item.hasDiscount) {
-                total += item.price - item.discountPrice;
+                total += (item.price - item.discountPrice) * item.quantity;
             }
             return total;
         }, 0));
@@ -32,10 +32,22 @@ const ShoppingCart = () => {
     const calcTotalPrice = () => {
         setTotalPrice(items.reduce((total, item) => {
             // اگر محصول تخفیف دار است، مقدار تخفیف به مجموع تخفیف‌ها اضافه شود
-            total += item.price;
+            total += item.price * item.quantity;
             return total;
         }, 0))
     }
+    const decreaseQuantity = (item) => {
+        calcTotalDiscount();
+        calcTotalPrice();
+        decreaseCartItem(item)
+
+    };
+    const increaseQuantity = (item) => {
+        calcTotalDiscount();
+        calcTotalPrice();
+        increaseCartItem(item)
+
+    };
 
 
     useEffect(() => {
@@ -68,16 +80,18 @@ const ShoppingCart = () => {
                                                 </tr>
                                             </thead>
                                             <tbody className='block md:table-row-group'>
-                                                {items.map(item => (
-                                                    <tr className='
-                                                    block mb-5
-                                                    border-b border-gray-200 transition-all duration-[0.3s] ease-in-out 
-                                                    [&>td]:pt-[15px] [&>td]:pb-[5px]
-                                                    md:[&>td]:py-6 md:[&>td]:px-0 
-                                                    md:table-row md:mb-0
-                                                    hover:bg-blue-50
-                                                    last:border-b-0 last:mb-0
-                                                    '>
+                                                {items.map((item, index) => (
+                                                    <tr
+                                                        key={index}
+                                                        className='
+                                                        block mb-5
+                                                        border-b border-gray-200 transition-all duration-[0.3s] ease-in-out 
+                                                        [&>td]:pt-[15px] [&>td]:pb-[5px]
+                                                        md:[&>td]:py-6 md:[&>td]:px-0 
+                                                        md:table-row md:mb-0
+                                                        hover:bg-blue-50
+                                                        last:border-b-0 last:mb-0
+                                                        '>
                                                         <td className='item-product p-0 md:!pr-[30px] '>
                                                             <div className='thumb w-[100px] h-[100px] ml-[10px] relative border bg-white float-right md:w-[136px] md:h-[136px] md:ml-[18px]'>
                                                                 <Image src={item.images[0]} width={136} height={136} alt={item.title}
@@ -127,7 +141,7 @@ const ShoppingCart = () => {
                                                             <span className='h-full block visible text-sm mb-2 md:hidden md:invisible'>تعداد: </span>
                                                             <div className='h-8 leading-8 w-[100px] mb-[10px] md:m-0 md:float-right'>
 
-                                                                <ChangeQuantity />
+                                                                <ChangeQuantity decreaseQuantity={() => decreaseQuantity(item)} increaseQuantity={() => increaseQuantity(item)} lastQuantity={item.quantity} />
                                                             </div>
                                                             <span className='leading-8 float-right text-sm mr-0 cursor-pointer md:mr-[20px]' onClick={() => removeFromCart(item)}>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 inline-block ml-1">

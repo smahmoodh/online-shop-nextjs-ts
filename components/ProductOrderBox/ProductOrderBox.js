@@ -10,10 +10,9 @@ const ProductOrderBox = ({ product, propertiesToFill, productProperties }) => {
     const [quantity, setQuantity] = useState(1);
 
     const handleQuantityChange = (newQuantity) => {
-        // این تابع هنگامی که مقدار تغییر کند فراخوانی می‌شود
-        // شما می‌توانید مقدار جدید را در اینجا استفاده کنید
         setQuantity(newQuantity);
     };
+
   return (
       <div className="product-order md:col-span-12 lg:col-span-6">
           <div className="p-4 md:p-0 md:rounded-lg md:border md:shadow-[0_3px_20px_0_rgba(94,100,114,0.08)] ">
@@ -53,9 +52,9 @@ const ProductOrderBox = ({ product, propertiesToFill, productProperties }) => {
                           className="quantity-label w-[72px] m-0 text-sm flex-shrink-0"
                           htmlFor="quantity"
                       >
-                          تعداد: "{quantity}"
+                          تعداد: 
                       </label>
-                      <ChangeQuantity onQuantityChange={handleQuantityChange} />
+                      <ChangeQuantity decreaseQuantity={handleQuantityChange} increaseQuantity={handleQuantityChange} />
                   </div>
               </div>
               <div className="price-area max-w-full flex flex-col mb-2">
@@ -90,7 +89,7 @@ const ProductOrderBox = ({ product, propertiesToFill, productProperties }) => {
               <div className="fixed left-0 right-0 bottom-0 p-4 bg-white backdrop-blur-lg shadow-[0_-1px_0_0_#e6e6e6] transition-all duration-300 ease-out delay-150 z-[900]
                             md:relative md:block md:left-auto md:right-auto md:bottom-auto md:bg-transparent md:border-none md:shadow-none md:backdrop-blur-none md:z-auto
                           ">
-                  <AddToCartButton product={product} />
+                  <AddToCartButton product={product} quantity={quantity} />
               </div>
           </div>
       </div>
