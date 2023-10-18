@@ -4,7 +4,7 @@ import { CartContext } from "@/app/context/Cart/CartContext";
 import Toast from "../Toast/Toast";
 
 
-const AddToCartButton = ({product}) => {
+const AddToCartButton = ({product, quantity}) => {
     // Get the dispatch function from the cart context
     const { dispatch, state, addToCart } = useContext(CartContext);
     const [showAlert, setShowAlert] = useState(false);
@@ -17,7 +17,7 @@ const AddToCartButton = ({product}) => {
         // dispatch({ type: "ADD_ITEM", payload: { product } })
 
         try {
-            await addToCart(product); // اجرای تابع در context
+            await addToCart({product, quantity}); // اجرای تابع در context
             const toast = new Toast({
                 text: "کالا به سبد خرید اضافه شد.",
                 position: "top-center",

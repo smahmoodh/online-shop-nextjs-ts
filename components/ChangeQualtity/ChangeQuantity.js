@@ -1,14 +1,16 @@
 'use client'
 import React, { useState } from "react";
 
-const ChangeQuantity = () => {
-    const [productQuantity, setProductQuantity] = useState(1);
+const ChangeQuantity = ({ increaseQuantity, decreaseQuantity, lastQuantity = 1 }) => {
+    const [productQuantity, setProductQuantity] = useState(lastQuantity);
 
     const quantity = (type) => {
         if (type === 'add') {
             setProductQuantity(productQuantity + 1);
+            increaseQuantity(productQuantity + 1);
         } else if (type === 'min' && productQuantity > 1) {
             setProductQuantity(productQuantity - 1);
+            decreaseQuantity(productQuantity - 1);
         }
     };
 
