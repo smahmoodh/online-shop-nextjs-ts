@@ -6,15 +6,15 @@ import ProductSwiperList from "@/components/ProductSwiperList/ProductSwiperList"
 import { mongooseConnect } from "@/lib/mongodb";
 import { Product } from "@/models/Product";
 
-export const metadata = {
+export const metadata: { title: string, description: string } = {
   title: "فروشگاه اینترنتی لوازم جانبی",
   description:
     "فروشگاه اینترنتی لوازم جانبی اولین فروشگاه تخصصی لوازم جانبی موبایل و تبلت و لپ تاپ خرید پاور بانک و هندزفری بلوتوث و انوع قاب و محافظ گوشی اسپیکر بلوتوث",
 };
 
-const Home = async () => {
-  const newProducts = await getNewProducts();
-  const featuredProduct = await getFeaturedProduct();
+const Home = async (): Promise<JSX.Element> => {
+  const newProducts: typeof Product[] = await getNewProducts();
+  const featuredProduct: typeof Product[] = await getFeaturedProduct();
 
   {
     /*
@@ -25,11 +25,11 @@ const Home = async () => {
         console.log(data);
         setProducts(data.data)
     }
-
     useEffect(() => {
         fetchData()
     }, [])*/
   }
+
   return (
     // container max-w-8xl mx-auto px-4 sm:px-6 md:px-8
     <div className="flex flex-col gap-6">
@@ -56,19 +56,22 @@ const Home = async () => {
 
 export default Home;
 
-async function getNewProducts() {
+async function getNewProducts(): Promise<typeof Product[]> {
   await mongooseConnect();
-  const newProducts = await Product.find({}, null, {
+  const newProducts: typeof Product[] = await Product.find({}, null, {
     sort: { _id: -1 },
     limit: 10,
   });
   return JSON.parse(JSON.stringify(newProducts));
 }
-async function getFeaturedProduct() {
+
+async function getFeaturedProduct(): Promise<typeof Product[]> {
   await mongooseConnect();
-  const featuredProduct = await Product.find({}, null, {
+  const featuredProduct: typeof Product[] = await Product.find({}, null, {
     sort: { _id: 1 },
     limit: 10,
   });
   return JSON.parse(JSON.stringify(featuredProduct));
 }
+
+

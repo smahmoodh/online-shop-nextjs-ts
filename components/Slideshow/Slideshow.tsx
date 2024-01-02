@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import React , { useState, useEffect, useRef } from "react";
 import {
   Navigation,
   Pagination,
@@ -8,6 +8,7 @@ import {
   Autoplay,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperOptions } from 'swiper/types';
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,12 +23,13 @@ import slide2 from "@/public/assets/img/slideshow/slideshow2.jpg";
 import slide3 from "@/public/assets/img/slideshow/slideshow3.jpg";
 import slide4 from "@/public/assets/img/slideshow/slideshow4.jpg";
 
-const Slideshow = () => {
-  const progressCircle = useRef(null);
-  const progressContent = useRef(null);
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty("--progress", 1 - progress);
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+const Slideshow:React.FC = () => {
+  const progressCircle: React.RefObject<SVGSVGElement> = useRef(null);
+  const progressContent: React.RefObject<HTMLDivElement> = useRef(null);
+  const onAutoplayTimeLeft = (s: any, time: number, progress: number):void => {
+    progressCircle.current && progressCircle.current.style.setProperty("--progress", (1 - progress).toString());
+    if (progressContent.current)
+      progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
 
   //

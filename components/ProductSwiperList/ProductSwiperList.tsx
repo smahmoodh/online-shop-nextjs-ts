@@ -1,16 +1,26 @@
-"use client";
+"use client"
+import React, { FC } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ProductItem from "@/components/ProductItem/Product";
+import { Product } from "@/models/Product";
+import { Document } from "mongodb";
 
+import ProductItem from "@/components/ProductItem/Product";
 import "swiper/css";
 import "swiper/css/navigation";
-
 import "./ProductSwiperList.css";
 import Link from "next/link";
 import BoxTitleBar from "../BoxTitleBar/BoxTitleBar";
 
-const ProductSwiperList = ({ products, title, url, showMoreLink }) => {
+
+interface ProductSwiperListProps {
+  products: typeof Product[];
+  title: string;
+  url: string;
+  showMoreLink: boolean;
+}
+
+const ProductSwiperList: FC<ProductSwiperListProps> = ({ products, title, url, showMoreLink }) => {
   return (
     <section className="widget clear-both text-justify mb-[10px] md:rounded-sm md:bg-white md:mb-8 md:shadow-[0_1px_2px_0_rgba(0,0,0,.15)]">
       {/* <div
@@ -64,12 +74,13 @@ const ProductSwiperList = ({ products, title, url, showMoreLink }) => {
               modules={[Navigation]}
             >
               {products.map((product) => (
-                <SwiperSlide key={product._id}>
+                <SwiperSlide key={(product as Document)._id}>
                   <div
                     className="product-slide price_on"
                     style={{ width: "100%", display: "inline-block" }}
                   >
-                    <ProductItem product={product} slider={true} />
+                    {/* <ProductItem product={product} slider={true} /> */}
+                    <ProductItem product={product} />
                   </div>
                 </SwiperSlide>
               ))}
@@ -83,8 +94,4 @@ const ProductSwiperList = ({ products, title, url, showMoreLink }) => {
 
 export default ProductSwiperList;
 
-{
-  /*
 
-*/
-}
