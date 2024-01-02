@@ -1,5 +1,5 @@
 "use client";
-import React , { useState, useEffect, useRef } from "react";
+import React, { RefObject, FC, useRef } from "react";
 import {
   Navigation,
   Pagination,
@@ -23,9 +23,9 @@ import slide2 from "@/public/assets/img/slideshow/slideshow2.jpg";
 import slide3 from "@/public/assets/img/slideshow/slideshow3.jpg";
 import slide4 from "@/public/assets/img/slideshow/slideshow4.jpg";
 
-const Slideshow:React.FC = () => {
-  const progressCircle: React.RefObject<SVGSVGElement> = useRef(null);
-  const progressContent: React.RefObject<HTMLDivElement> = useRef(null);
+const Slideshow:FC = () => {
+  const progressCircle: RefObject<SVGSVGElement> = useRef(null);
+  const progressContent: RefObject<HTMLDivElement> = useRef(null);
   const onAutoplayTimeLeft = (s: any, time: number, progress: number):void => {
     progressCircle.current && progressCircle.current.style.setProperty("--progress", (1 - progress).toString());
     if (progressContent.current)

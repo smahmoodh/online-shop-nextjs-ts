@@ -1,6 +1,8 @@
 // import ProgressBar from "@/components/ProgressBar/ProgressBar";
 
-const loading = () => {
+import { FC } from "react";
+
+const loading:FC = () => {
   return (
     // <ProgressBar />
     <>

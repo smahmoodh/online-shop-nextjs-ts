@@ -5,17 +5,16 @@ import AuthProvider from "@/app/context/Auth/AuthProvider";
 import { CartProvider } from "@/app/context/Cart/CartContext";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/Footer";
+import PrelineScript from "@/components/Preline/PrelineScript";
 
 import "@/styles/global.css";
 import "@/styles/fonts.css";
 import "@/components/Toast/Toast.css"
 
+
 // import "tw-elements/dist/css/tw-elements.min.css";
 
-const RootLayout = ({ children }) => {
-  useEffect(() => {
-    import("preline");
-  }, []);
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="fa" dir={"rtl"} className="">
       <body className="text-color-base bg-gray-50">
@@ -32,6 +31,7 @@ const RootLayout = ({ children }) => {
           </CartProvider>
         </AuthProvider>
       </body>
+      <PrelineScript />
     </html>
   );
 };
